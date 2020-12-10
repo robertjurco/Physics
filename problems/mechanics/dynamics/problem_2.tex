@@ -2,10 +2,10 @@
 \probinit
 \probname{}
 
-\probsource{}
-\probtopics{}
+\probsource{Course of Theoretical mechanics at Charles university 2020}
+\probtopics{Dynamics}
 
-\probtask{
+\probtask{Projectil of mass $m$ is shooted perpendiculary up in the gravitational field of earth. Find all possible motions of the projectil depending of its initial energy. Neglect air resistance.
 }
 %</problemtag>
 %<*solutiontag>
@@ -15,6 +15,13 @@
 %</solutiontag>
 %<*answertag>
 \probanswer{
-
+    \[
+        \begin{split}
+            \text{for}E<0\quad x&=\frac{GmM}{2|E|}(1-\cos\tau)\\
+            t-t_0&=\frac{GmM}{4|E|}\sqrt{\frac{2m}{|E|}}(\tau-\sin\tau)\\
+            \text{for}E>0\quad x&=\frac{GmM}{2E}(\cosh\tau-1)\\
+            t-t_0&=\frac{GmM}{4E}\sqrt{\frac{2m}{E}}(\sinh\tau-\tau)
+        \end{split}
+    \]
 }
 %</answertag>

@@ -108,6 +108,18 @@
 }\ifnum\theproblem<\theproblemcount
 \repeat
 
+\subsection{Oscillations and waves}
+
+\renewcommand{\problemsdir}{oscillations_and_waves}
+\setcounter{problemcount}{20}
+\setcounter{problem}{0}
+\loop{
+    \stepcounter{problem}
+    %\input{\problemsdir/problem_\theproblem.tex}
+    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{problemtag}
+}\ifnum\theproblem<\theproblemcount
+\repeat
+
 \subsection{Lagrangian mechanics}
 
 \renewcommand{\problemsdir}{Lagrangian_mechanics}
@@ -172,6 +184,18 @@
 \subsection{Dynamics}
 
 \renewcommand{\problemsdir}{dynamics}
+\setcounter{problemcount}{20}
+\setcounter{problem}{0}
+\loop{
+    \stepcounter{problem}
+    %\input{\problemsdir/problem_\theproblem.tex}
+    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{answertag}
+}\ifnum\theproblem<\theproblemcount
+\repeat
+
+\subsection{Oscillations and waves}
+
+\renewcommand{\problemsdir}{oscillations_and_waves}
 \setcounter{problemcount}{20}
 \setcounter{problem}{0}
 \loop{
