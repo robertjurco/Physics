@@ -1,0 +1,390 @@
+\documentclass{article}
+\usepackage[a4paper, landscape, margin=10px]{geometry}
+%TODO: Configure geometry package to fit for printing.
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, wasysym}
+
+\newcommand{\<}{\left<}
+\renewcommand{\>}{\right>}
+
+\newcommand{\im}{\text{Im}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\rank}{\text{rank}}
+\renewcommand{\hom}{\text{Hom}}
+\newcommand{\End}{\text{End}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Id}{\text{Id}}
+\newcommand{\diag}{\text{diag}}
+\newcommand{\sign}{\text{sign}}
+
+\newcommand*\conj[1]{\overline{#1}}
+\newcommand*\norm[1]{||#1||}
+\newcommand*\op[1]{\mathbb{#1}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+%\newcommand{\define}{{\color{red}{\textbf{Def. }}}}
+%\newcommand{\lemma}{{\color{blue}{\textbf{Lemma. }}}}
+%\newcommand{\state}{{\color{brown}{\textbf{St. }}}}
+%\newcommand{\theor}{{\color{purple}{\textbf{Th. }}}}
+%\newcommand{\note}{{\color{green}{\textbf{Note. }}}}
+
+\newcommand{\define}{\textbf{Def. }}
+\newcommand{\lemma}{\textbf{Lemma. }}
+\newcommand{\state}{\textbf{St. }}
+\newcommand{\theor}{\textbf{Th. }}
+\newcommand{\note}{\textbf{Note. }}
+
+\begin{document}
+\begin{multicols}{3}
+
+    \textbf{Cheatsheet on linear algebra.}\\
+    \indent Author/s: \emph{R\'obert Jur\v{c}o}\\
+    \indent Date: 27.7.2020\\
+    \indent Last modified at: 28.2.2020\\
+
+    \textbf{I. Notes}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+        \item \define = definition, \state = statement, \lemma = Lemma, \theor = theorem, \note = note
+        \item $m,n\in\N,R^{m\times n}$ is always written only as $R^{m\times n}$.
+
+    \end{enumerate}
+
+    %TODO: Define Kernel, nullity, image..
+
+    \textbf{II. Matrices}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        %TODO: That LOOOONG formula for changing elements of inverse matrix when changed element of original matrix.
+        \item \state (Asociativity of matrix multiplication). Let $A\in\R^{m\times n},B\in\R^{n\times p},C\in\R^{p\times q}$. Then $\left(AB\right)C=A\left(BC\right)$.
+        \item \state (Distributivity of matrix multiplication). Let $A,B\in\R^{m\times n},C,D\in\R^{n\times p}$. Then $\left(A+B\right)C=AB+AC$, $A\left(C+D\right)=AC+AD$.
+        \item \state If $A\in\R^{m\times n},B\in\R^{n\times p}$, then $(AB)^T=B^TA^T$.
+        \item \state Let $A,B,C\in\R^{n\times n}$ so that $BA=AC=E$. Then $B=C$.
+        \item \state Let $A,B\in\R^{n\times n}$, then $\left(AB\right)^{-1}=B^{-1}A^{-1}$.
+        \item \state Let $A\in\R^{n\times n}$, then $\left(A^T\right)^{-1}=\left(A^{-1}\right)^T$.
+        \item \define Let $A\in\C^{m\times n}$, then $A^+=\bar{A}^T$ is called the \emph{hermitian conjugate} of $A$. If $A=A^+$ the matrix $A$ is called a \emph{hermitian matrix}.
+        \item \state Let $A\in\C^{m\times n}$, $B\in\C^{n\times p}$, then $\left(AB\right)^+=B^+A^+$.
+        \item \state Let $A\in\C^{n\times n}$, then $\left(A^+\right)^{-1}=\left(A^{-1}\right)^+$.
+        \item \state If $A\in\R^{m\times n}$, then $\ker A\leq\R^n$.
+        \item \state The map $f_A:\R^n\to\R^m$ is bijective if and only if $A$ is a square matrix and there exists a matrix $X$, such that $AX=E$.
+
+    \end{enumerate}
+
+    \textbf{III. Vector spaces}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        %TODO: Closure as a separated axiom??
+        \item \define Group: Let $\circ:G\times G\to G$ be a binary operation over the set $G$. Then $\left(G,\circ\right)$ is a group if:
+            \begin{enumerate}[itemsep=0pt, topsep=0pt, partopsep=0pt, parsep=0pt]
+                \item $\forall a,b,c\in G:\left(a\circ b\right)\circ c=a\circ\left(b\circ c\right)$ (asociaticity)
+                \item $\exists e\in G:\forall a\in G:a\circ e=e\circ a=a$ (identity element)
+                \item $\forall a\in G:\exists a^{-1}\in G:a\circ a^{-1}=a^{-1}\circ a=e$ (inverse element).
+            \end{enumerate}
+        \item \define If $\left(G,\circ\right)$ is a group and $\forall a,b\in G:a\circ b=b\circ a$, then it is an abelian (commutative) group.
+        \item \define Commutative field: Set $\F$ is a commutative field if there are two operations $+$ and $\cdot$ defined on that set, such that:
+            \begin{enumerate}[itemsep=0pt, topsep=0pt, partopsep=0pt, parsep=0pt]
+                \item $\left(\F,+\right)$ is a commutative group.
+                \item If $0$ is an identity element of $\left(\F,+\right)$, then $\left(\F\setminus\{0\},\cdot\right)$ is a commutative group.
+                \item $\forall a.b.c\in\F:a\cdot(b+c)=a\cdot b+a\cdot c$ (distributivity).
+            \end{enumerate}
+        \item \define Vector space: %TODO: Finish definition.
+        \item \define Let $V$ be a vector space over $\F$ and $W\subset V$, $W\neq\emptyset$, such that $\forall \bm v,\bm w\in W,\forall r,s\in\F:r\bm v+s\bm w\in W$. Then $W$ is a subspace of $V$ ($W\leq V$).
+        \item Let $V$ be a vector space over $\F$ and $M\subset V$. Then $\<M\>\leq V$.
+        \item Let $V$ be a vector space over $\F$. Then following holds:
+            \begin{enumerate}[itemsep=0pt, topsep=0pt, partopsep=0pt, parsep=0pt]
+                \item $M\subset V$ having at least two elements is lineary dependent if and only if there exist $v\in M$, which can be written as a linear combination of $M$ other elements.
+                \item Let $M$ be generating $V$. Then $M$ is lineary dependent, if and only if there exists $N\subset M$ that is generating $V$.
+            \end{enumerate}
+
+        %TODO: Wouldn't it be easier to define V as: "V is a vector space over F" in the beggining and then use/recall V as defined.
+
+    \end{enumerate}
+
+    \textbf{IV. Basis and dimension}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define Basis: Let $V$ be a vector space over $\F$. Set that is generating $V$ and is lineary independent is called basis of $V$.
+        \item \state Let $V$ be a vector space over $\F$. Set $M$ is a basis of $V$ if and only if every vector from $V$ can be written as only one linear combination of $M$ elements.
+        \item \define Vector space $V$ over $\F$ is called a vector space of a finite dimension if there esists a finite basis.
+        \item Let $V$ be a vector space over $\F$. Then following statements are equivalent:
+            \begin{enumerate}[itemsep=0pt, topsep=0pt, partopsep=0pt, parsep=0pt]
+                \item $V$ is of finite dimension.
+                \item In $V$ exists a finite set of generators.
+                \item From every set of $V$'s generators is possible to take out a $V$'s finite basis.
+            \end{enumerate}
+        \item \theor Given a vector space $V$ of finite dimension, then all the bases of the vector space have the same number of elements.
+        \item \lemma Steinitz exchange lemma: Let $V$ be a vector space over $\F$, $M$ it's $n$-element set of generators and $N=\{\bm v_1,\ldots,\bm v_k\}$ a lineary independet set in $V$. Then $k\leq n$ and elemets of $M$ is possible to reorder into $\{\bm u_1,\bm u_2,\ldots,\bm u_n\}$ so that $\{\bm v_1,\ldots,\bm v_k,\bm u_{k+1},\ldots,\bm u_n\}$ generates $V$.
+        \item \state Let $V$ be a vector space over $\F$ of dimension $n$ and $M\subset V$.
+            \begin{enumerate}[itemsep=0pt, topsep=0pt, partopsep=0pt, parsep=0pt]
+                \item If $M$ is lineary independent, then $|M|\leq n$.
+                \item If $M$ generates $V$, then $|M|\geq n$.
+                \item If $|M|=n$, then $M$ is a basis of $V$.
+            \end{enumerate}
+        \item \state Let $V$ be a vector space of dimension $n$ and $W$ its subspace. Then $W$ is a space of finite dimension and $\dim W\leq n$.
+        \item \state Let $V$ be a vector space of dimension $n$ and $W$ its subspace, $N$ a basis of $W$. Then there exists a set $M\supset N$, which is basis of $V$.
+
+    \end{enumerate}
+
+    \textbf{V. Rank}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \state Let $A=(\bm a_1|\ldots|\bm a_n)\in\F^{m\times n}$, where $\bm a_i\in\F^m$. Then\\$\ker A=\{\bm x\in\F^n|A\bm x=\bm o\}\leq F^n$,\\$\im A=\<\bm a_1,\ldots,\bm a_n\>\leq\F^m$.
+        \item \state Let $A=(\bm a_1|\ldots|\bm a_n)\in\F^{m\times n}$ and $R\in\F^{m\times m}$ be regular. Then (a) $\ker\left(RA\right)=\ker A$, (b) $\im\left(RA\right)^T=\im A^T$.
+        \item \state Let $A=(\bm a_1|\ldots|\bm a_n)\in\F^{m\times n}$ and $Q\in\F^{n\times n}$ be regular. Then (a) $\ker\left(AQ\right)^T=\ker A^T$, (b) $\im\left(AQ\right)=\im A$.
+        \item \lemma Let $A=(\bm a_1|\ldots|\bm a_n)\in\F^{m\times n}$ and $R\in\F^{m\times m}$ be regular. Let $RA=A'=(\bm a'_1|\ldots|\bm a'_n)$. If $(s_1,\ldots,s_n)\in\F^n$, then\\$\sum^n_{i=1}s_i\bm a_i=\bm o\Longleftrightarrow\sum^n_{i=1}s_i\bm a'_i=\bm o$.
+        \item \theor If $A\in\F^{m\times n}$ then $\dim\im A=\dim\im A^T$.
+        \item \define Let $A\in\R^{m\times n}$. Then rank of $A$ is defined as $\rank A=\dim\im A=\dim\im A^T$.
+        \item \state Let $A\in\R^{m\times n},R\in\R^{p\times m},Q\in\R^{n\times q}$. Then\\(a) $\rank(RA)\leq\rank(A)$, (b) $\rank(AQ)\leq\rank(A)$,\\(c) $\rank(A)=\rank(A^T)$,\\(d) if $p=m$ and $R$ is regular $\rank(RA)=\rank(A)$,\\(e) if $n=q$ and $Q$ is regular $\rank(AQ)=\rank(A)$.
+        \item \theor Rank-nullity theorem: Let $A\in\R^{m\times n}$. Then $\dim\ker A+\dim\im A=n$.
+        \item \state Let $A\in\R^{m\times n}$. Then $\ker A^TA=\ker A$ and $\rank A^TA=\rank A$.
+            %TODO: Shouln't here be A\in\R^{n\times n} ??? If yes we have mistake in algebra notes.
+        \item \theor Frobenius theorem: Let $A\in\R^{m\times n}$, $\bm b\in\F^m$. System $A\bm x=\bm b$ has a solution if $\rank A=\rank(A|b)$.
+
+    \end{enumerate}
+
+    \textbf{VI. Vector representation and linear maps}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        %TODO: Define "Let $V,W$ be two vector spaces over $\F$, anf $f:V\to W$ is a linear map, $B$ basis of $V$, $C$ basis of $W$" or sth like that in beggining onlt once for all theorems to save space???
+        \item \state Let $V$ be a vector space over $\F$ of finite dimension, $B$ its basis, $\bm u,\bm v\in V,r,s\in\F$. Then $\left[r\bm u+s\bm v\right]^B=r\left[\bm u\right]^B+s\left[\bm v\right]^B$.
+        \item \define Definition of linear map: Let $V,W$ be two vector spaces over $\F$, and $f:V\to W$ such that $\forall r,s\in\F,\forall\bm u,\bm v\in V:f\left(r\bm u+s\bm v\right)=rf\left(\bm u\right)+sf\left(\bm v\right)$. Then $f$ is a linear map.
+        \item \define Matrix of linear map: Let $V,W$ be two vector spaces over $\F$, $f:V\to W$ is a linear map, $B=(\bm v_1,\ldots,\bm v_n)$ basis of $V$, $C=(\bm w_1,\ldots,\bm w_m)$ basis of $W$. Then matrix $\left[f\right]_B^C=\left(\left[f\left(\bm v_1\right)\right]^C|\ldots|\left[f\left(\bm v_n\right)\right]^C\right)$ is called matrix of linear map in respect to basis B and C.
+        \item \define Let $V,W$ be two vector spaces over $\F$, $f:V\to W$ is a linear map, $B$ basis of $V$, $C$ basis of $W$, $\bm v\in V$. Then $\left[f\left(\bm v\right)\right]^C=\left[f\right]_B^C\left[\bm v\right]^B$.
+        \item \define Let $f:V\to W$ be a linear map. Then $\ker f=\{\bm v\in V|f\left(\bm v\right)=\bm o\}$ and $\im f=\{\bm w\in W|\exists\bm v\in V:f\left(\bm v\right)=\bm w\}$.
+        \item \state Let $V,W$ be two vector spaces over $\F$, $f:V\to W$ is a linear map, $B=(\bm v_1,\ldots,\bm v_n)$ basis of $V$, $C=(\bm w_1,\ldots,\bm w_m)$ basis of $W$. Then $\left[\ker f\right]^B=\ker\left[f\right]_B^C$ and $\left[\im f\right]^C=\im\left[f\right]_B^C$.
+        \item \define Let $V$ be a vector space over $\F$ of dimension $n$, $B,C$ its basis. Matrix $\left[\text{Id}\right]_B^C\in\F^{n\times n}$ is called matrix of transform from basis $C$ to basis $B$.
+        \item \state Let $V,W$ be two vector spaces over $\F$, $f,g:V\to W$ are linear maps, $B$ basis of $V$, $C$ basis of $W$, $r,s\in\F$. Then $\left[rf+sg\right]_B^C=r\left[f\right]_B^C+s\left[g\right]_B^C$.
+        \item \state Let $U,V,W$ be three vector spaces over $\F$, $f:U\to V$, $g:V\to W$ are linear maps, $B$ basis of $U$, $C$ basis of $V$ and $D$ basis of $W$. Then $\left[g\circ f\right]_B^D=\left[g\right]_C^D\left[f\right]_B^C$.
+        \item \state Let $V,W$ be two vector spaces of finite dimension over $\F$, $f:V\to W$ is a linear map, $B,B'$ bases of $V$, $C,C'$ bases of $W$. Then $\left[f\right]_{B'}^{C'}=\left[\text{Id}\right]_B^{C'}\left[f\right]_B^C\left[\text{Id}\right]_{B'}^C$.
+        \item \define Homomorphism = linear morphism, monomorphism = injective hom., epimorphism = surjective hom., isomorphism = bijective hom., endomorphism = hom. into itself, automorpism = injective monomorhism.
+        \item \state Let $U,V,W$ be three vector spaces over $\F$, $f\in\hom\left(V,W\right)$,  $g\in\hom\left(U,V\right)$. Then \\(a) $f$ is a monomorphism $\Longleftrightarrow\ker f=\emptyset$,\\(2) $f$ is an epimorphism $\Longleftrightarrow\im f=W$,\\(3) $f,g$ are monomorphisms $\Longrightarrow f\circ g$ is a monomorph.,\\(4) $f,g$ are epimorphisms $\Longrightarrow f\circ g$ is an epimorphism,\\(5) $f\circ g$ is monomorphism $\Longrightarrow g$ is a monomorphism,\\(6) $f\circ g$ is an epiomorphism $\Longrightarrow f$ is a epimorphism
+        \item \theor Two vector spaces $V,W$ of finite dimension over $\F$ are isomorphic if and only if they have same dimension.
+        \item \theor Let $V,W$ be two vector spaces. Then\\$\dim V=n\wedge\dim W=m\Longleftrightarrow\dim\hom\left(V,W\right)=mn$.
+        \item \theor Homomorphism given by values of basis: Let $V,W$ be two vector spaces over $\F$, $f:V\to W$ is a linear map, $B=(\bm v_1,\ldots,\bm v_n)$ basis of $V$, $C=(\bm w_1,\ldots,\bm w_m)$ basis of $W$. Then there exists just one $f\in\hom\left(V,W\right)$ such that $f\left(\bm v_i\right)=w_i$. Furthemore, $f$ is monomorphism if and only if $C$ is lineary independent and $f$ is epimorphism if and only if $C$ generates $W$.
+        \item \theor Rank-nullity theorem: Let $V,W$ be two vector spaces over $\F$, $\dim V=n$, $f\in\hom\left(V,W\right)$. Then $\dim\ker f+\dim\im f=n$.
+        \item \state Let $V$ be a vector space of finite dimension over $\F$, $f\in\End\left(V\right)$. If $f$ is mono- or epimorphism, then it is also an automorphism.
+
+    \end{enumerate}
+
+    \textbf{VII. Permutations, determinant}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define The symmetric group $S_n$ is a group of all bijective functions from $M=\{1,2,\ldots,n\}$ to $M$.
+        %TODO: Somehow inteligently explanained Permutations and sign of Permutations
+
+        \item \define Let $A\in\F^{n\times n}$, then a determinant of a matrix $A$ is defined as $\det A=\sum_{\pi\in S_n}\sgn\pi a_{1\pi(1)}a_{2\pi(2)}\ldots a_{n\pi(n)}$.
+        \item \theor Let $A\in\F^{n\times n}$, then $\det A=\det A^T$ and $\det A^+=\conj{\det A}$.
+        \item \state Let $i\in\{1,\ldots,n\},\bm a_1,\ldots,\bm a_n,\bm a'_i\in\F^n,r,r'\in\F,\rho\in S_n$. Then\\(a) $\det\left(\bm a_1|\ldots|r\bm a_i+r'\bm a'_i|\ldots|\bm a_n\right)=$\\${}\quad=r\det\left(\bm a_1|\ldots|\bm a_i|\ldots|\bm a_n\right)+r'\det\left(\bm a_1|\ldots|\bm a'_i|\ldots|\bm a_n\right)$,\\(b) $\det\left(\bm a_{\rho(1)}|\ldots|\bm a_{\rho(n)}\right)=\sgn\left(\rho\right)\det\left(\bm a_1|\ldots|\bm a_n\right)$.\
+        \item \state Let $A\in\F^{n\times n}$, then if $A$ has two equal columns/rows or one zero column/row, then $\det A=0$.
+        \item \state Let $A\in\F^{n\times n}$, then for elementary column/row operation of
+        (a) column/row switching the sign of determinant is changed,
+        (b) column/row multiplication by $r\in\F$ the determinant of $A$ is multiplied by $r$,
+        (c) addition of multiple of column/row to another column/row does not change determinant.
+        \item \theor Matrix $A\in\F^{n\times n}$ is regular if and only if $\det A\neq 0$.
+        \item \define Let $A\in\F^{m\times n}$ and $k\in\N:0<k\leq m,k\leq n$. A minor of order $k$ of $A$ is the determinant of a $k\times k$ matrix obtained from $A$ by deleting $m-k$ rows and $n-k$ columns.
+        \item \theor Let $A\in\F^{m\times n}$. Then $\rank\left(A\right)=k$ if and only if the highest order of nonzero minor of $A$ is $k$.
+        \item \define The $i,j$ cofactor of the matrix $A\in\F^{n\times n}$ is the scalar $C_{ij}$ defined by $C_{ij}=(-1)^{i+j}M_{ij}$, where $M_{ij}$ is the $i,j$ minor of $A$, that is, the determinant of the $(n-1)\times(n-1)$ matrix that results from deleting the $i$-th row and the $j$-th column of $A$.
+        \item \define Let $A\in\F^{m\times n}$. Then the matrix formed by all of the cofactors of $A$ is called the cofactor matrix $C$.
+        \item \theor Laplace expansion: Suppose $A\in\F^{n\times n}$ and fix any $i,j\in\{1,2,\ldots,n\}$. Then $\det A=\sum_{j'=1}^na_{ij'}C_{ij'}=\sum_{i'=1}^na_{i'j}C_{i'j}$.
+        \item \theor Cramer's rule: Let $A\in\F^{n\times n}$ be a regular matrix, $\bm b\in\F^n$. Then the system $A\bm x=\bm b$ has a unique solution, and $i$-th value of $\bm x$ is given by $x_i=\det A_{i,\bm b}/\det A$, where $A_{i,\bm b}$ is the matrix formed by replacing the $i$-h column of $A$ by the column vector $\bm b$.
+        \item \define Let $A\in\F^{m\times n}$. Then the adjugate of $A$ is the transpose of the cofactor matrix $C$ of $A$, $\adj(A)=C^T$.
+        \item \theor Let $A\in\F^{m\times n}$ be regular. Then\\ $A^{-1}=\adj(A)/\det(A)$.
+        \item \theor Let $A,B\in\F^{m\times n}$. Then $\det AB=\det A\det B$.
+        \item \state Let $A,R\in\F^{m\times n}$, where $R$ is regular. Then\\ $\det(R^{-1})=1/\det(R)$, and $\det(R^{-1}AR)=\det(A)$.
+        \item \state Let $V$ be a vector space of finite dimension over $\F$, $B$ it's basis and $f\in\End\left(V\right)$. Then $\det\left[f\right]_B^B$ is called \emph{determinant of endomorphism $f$}, and is for every base $B$ equal.
+        \item \define Let $B=\left(\bm b_1,\ldots,\bm b_n\right)$ be a base of $\R^n$. The base $B$ is positively oriented (right-handed) if $\det\left(\bm b_1|\ldots|\bm b_n\right)>0$, otherwise it's negatively oriented (left-handed).
+        \item \define Let $A\in\F^{n\times n}$. Then $\Tr A=\sum_{i=1}^na_{ii}$ is called a \emph{trace} of $A$.
+        \item \state Let $A\in\F^{n\times p}$, $B\in\F^{p\times q}$, $C\in\F^{q\times n}$. Then $\Tr ABC=\Tr BCA$.
+        \item \state Let $A,R\in\F^{n\times n}$ and $R$ be regular. Then $\Tr R^{-1}AR=\Tr A$.
+
+    \end{enumerate}
+
+    \textbf{VIII. Diagonalization}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        %TODO: Eigenvectors of A are same as of A^+ for square matrix but eigenvalues are complex conjugate.
+        %TODO: Eigenvectors of A are same as of A^+A for square matrix.
+
+        \item \define Let $V$ be a vector space over $\F$ and $f\in\End(V)$ and $\bm v$ be a nonzero vector in $V$, then $v$ is an eigenvector of $f$ if $f(\bm v)=\lambda\bm v$  where $\lambda\in\F$, known as the eigenvalue associated with $\bm v$.
+        %TODO: The thing that lambda is from F is total bullshit.
+        \item \define The \emph{characteristic polynomial of matrix $A\in\F^{n\times n}$} is the polynomial defined by $p_{A}(\lambda)=\det\left(A-\lambda E\right)$. The \emph{characteristic polynomial of endomorphism $f$} is $\det\left(f-\lambda E\right)$, or the characteristic polynomial of its arbitrary matrix $\left[f\right]_B^B$.
+        \item \state Let $A\in\F^{n\times n}$. Then its characteristic polynomial can be written as $p_A(\lambda)=(-\lambda)^n+\Tr(A)(-\lambda)^{n-1}+\ldots+\det(A)$.
+        \item \theor Every non-constant polynomial with complex coeficients has at least one root in $\C$.
+        \item \state Let $p(x)$ be a polynome with complex coeficients of degree $n>0$. Then it has together $n$ roots with theirs multiplicities.
+        \item \define Set of all eigenvalues of matrix $A$ is called \emph{spectrum} of $A$, denoted $\sigma(A)$. For $\lambda_i\in\sigma(A)$ is it's \emph{algebraric multiplicity} defined as multiplicity of root $\lambda_i$ of $p_A(\lambda)$, and it's \emph{geometric multiplicity} defined as $\dim\ker\left(A-\lambda_iE\right)$. These concepts are defined similary for endomorphisms.
+        \item \lemma Let $V$ be a vector space over $\F$ of dimension $n$, $f\in\End(V)$ and for all elements of set $M=\{\lambda_1,\ldots,\lambda_k\}$ let be chosen an arbitrary base $B_i$ of eigenspace $V_{\lambda_i}$. Then the set $B=B_1\cup\ldots\cup B_n$ is lineary independent.
+        \item \state Let $A\in\C^{n\times n}$ be a hermitian matrix. Then all of its eigenvalues are real.
+        \item \state Let $A\in\R^{n\times n}$ be a symmetric matrix, $\lambda,\mu$ two different eigenvalues of $A$, $\bm v\in V_\lambda$, $\bm w\in V_\mu$. Then $\bm v\perp\bm w$.
+        %TODO; It is working also for symmetric matrices in C, not only R.
+        \item \state Let $B=\left(\bm b_1,\ldots,\bm b_n\right)$ be an ortonormal base of $\R^n$, $U=\left[\Id\right]_B^K$. Then $U^T=U^{-1}$.
+        \item \define Let $U\in\F^{n\times n}$. If $U^TU=E$ then $U$ is called an \emph{ortonormal matrix}.
+
+    \end{enumerate}
+
+    \textbf{IX. Direct sum}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define Let $V$ be a vector space over $\F$ and $W_1,W_2\leq V$. Then the \emph{sum of subspaces} $W_1,W_2$, denoted as $W_1+W_2$, is the set of all vectors that could be written as $\bm w_1+\bm w_2$, where $\bm w_i\in W_i$. Moreover, if $W_1\cap W_2=0$, $W_1+W_2$ is called the \emph{direct sum of subspaces}, denoted as $W_1\oplus W_2$. If $W_1\oplus W_2=V$, then $W_2$ is a \emph{complement} of $W_1$ into $V$.
+        \item \state Every element of $W_1\oplus W_2$ is possible to write as combination of vector $\bm w_1\in W_1$ and vector $\bm w_2\in W_2$ with only one way.
+        \item \state If $V$ is a vector space over $\F$ and $W_1,W_2\leq V$, then $W_1+W_2=\<W_1+W_2\>$, hence the sum of subspaces is also a subspace. If $M_1$ and $M_2$ are sets of generators of $W_1$ and $W_2$, then $M_1\cup M_2$ is generating $W_1+W_2$.
+        \item Let $\mathcal W$ be a set of subspaces in $V$. Then thiers $sum$ is defined as $\sum_{W\in\mathcal W}W:=\<\cup_{W\in\mathcal W}W\>$.
+        \item \theor (About dimension of sum and intersection). Let $W_1,W_2\leq V$ be both of finite dimension. Then $\dim(W_1+W_2)=\dim W_1+\dim W_2-\dim(W_1\cap W_2)$.
+        \item \define Let $W_1,\ldots,W_k\leq V$. Then sum $W=W_1+\ldots+W_k$ is \emph{direct}, if every  vector $\bm w\in W$ is possible to write as $\bm w_1+\ldots+\bm w_k$, where $\bm w_i\in W_i$, only one way. We denote it then as $W=W_1\oplus\ldots\oplus W_k=\bigoplus_{i=1}^kW_i$.
+        \item \theor Let $W_1,\ldots,W_k\leq V$ be subspaces of finite dimesion. Then $\dim(W_1\oplus\ldots\oplus W_k)=\dim W_1+\ldots+\dim W_k$.
+        %TODO: Improve block notation. Add projection and insertion.
+        \item \state Let $n=n_1+n_2$, $m=m_1+m_2$, $p=p_1+p_2$, $A\in\F^{m\times n}$, $B\in\F^{n\times p}$ with blocks $A_{ij}\in\F^{m_i\times n_j}$, $A_{ij}\in\F^{n_i\times p_j}$. Then product $C:=AB$ has a block notation $C_{ij}=A_{i1}B_{ij}+A_{i2}B_{2j}$.
+        \item \state Let $A=\diag(A_{11},\ldots,A_{kk})$ be a block diagonal matrix. Then (a) $\forall p\in\N:A^p=\diag(A^p_{11},\ldots,A^p_{kk})$ and if are all $A_{ii}$ regular then also $A^{-p}=\diag(A^{-p}_{11},\ldots,A^{-p}_{kk})$, \\(b) $\rank(A)=\rank(A_{11})+\ldots+\rank(A_{kk})$,\\
+        (c) $\Tr(A)=\Tr(A_{11})+\ldots+\Tr(A_{kk})$,\\
+        (d) $\det(A)=\det(A_{11})\ldots\det(A_{kk})$,\\
+        (e) $\sigma(A)=\sigma(A_{11})\cup\ldots\cup\sigma(A_{kk})$.
+        \item \state Let $A,B\in\F^{n\times n}$. Then $\sigma(AB)=\sigma(BA)$ including multiplicativity.
+
+    \end{enumerate}
+
+    \textbf{X. Scalar (dot) product}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define Let $V$ be a vector space over $\F$. A map $g:V\times V\to\F$ is called an \emph{inner prroduct} on $V$, if for $\forall\bm u, \bm v, \bm w\in V,r,s\in\F$ it satisfies following:\\(a) \emph{conjugate symmetry} $g(\bm u,\bm v)=\overline{g(\bm v,\bm u)}$,\\(b) $g(r\bm u+s\bm v,\bm w)=\bar{r}g(\bm u,\bm w)+\bar{s}g(\bm v,\bm w)$,\\(c) $\forall\bm u\in V,\bm u\neq 0:g(\bm u,\bm u)>0$.
+        \item \define Form $g:V\times V\to\F$ is called a \emph{billinear form} if it is linear in both arguments. If it is linear in first argument and antilinear in second it is called an \emph{sesquilinear form}. If $forall\bm u\in V,\bm u\neq 0:g(\bm u,\bm u)>0$ it is called a \emph{possitively definite form}.
+        \item \define \emph{Standard} inner product on $\C^n$ is defined as $g(\bm u,\bm u)=\bm u^+\bm v$ and is denoted as $\<\bm u,\bm v\>$.
+        \item Let $(V,\<,\>)$ be an inner product space of a finite dimension, $C=(\bm w_i)_1^n$ its ortonormal base, $\bm u,\bm v\in V,\bm x=[\bm u]^C,\bm y=[\bm v]^C$. Then $\<\bm u,\bm v\>=\sum_{i=1}^n\bar{x}_iy_i$.
+        \item \note If $B=\left(\bm u_i\right)_1^n$ is a basis of $(V,g)$ then $[g]_B$ can be find using $[g_{ij}]_B=\left([\bm u_i]^B\right)^T[g]_B[\bm u_j]^B$.
+        \item \define A base $B$ in $V$ we called a \emph{polar base of form $g$}, if $[g]_B$ is diagonal.
+        \item \theor Every symetric billinear or hermitian sequilinear form on vector space $V$ of finite dimension has a polar base.
+        \item \define If $B$ is a polar base of $(V,g)$ then we call it an \emph{ortogonal} base. Moreover if $[g]_B=E$, we say that $B$ is an \emph{ortonormal} base.
+        \item \state If $g$ is hermitian sequilinear form on vector space $V$ over $\C$, then $\forall\bm u,\bm v\in V$ holds following\\
+        (1) $\Re g(\bm u,\bm v)=\frac{1}{2}\left(g(\bm u+\bm v,\bm u+\bm v)-g(\bm u,\bm u)-g(\bm v,\bm v)\right)$\\ (2) $\Im g(\bm u, \bm v)=\frac{1}{2}\left(g(i\bm u+\bm v,i\bm u+\bm v)-g(\bm u,\bm u)-g(\bm v,\bm v)\right)$.
+        \item \define \emph{Orthogonal projection} $P_{\bm v}:V\to V$ of $\bm u\in V$ onto nonzero vector $\bm v\in V$ is defined as $P_{\bm v}(\bm u)=\frac{\<\bm v,\bm u\>}{\norm{\bm v}^2}\bm v$.
+        \item \define Orthogonal projec. onto \emph{orthogonal complement} $\bm v^\perp$ is defined as $P_{\bm v^\perp}=\Id-P_{\bm v}$ or $P_{\bm v^\perp}(\bm u)=\bm u-\frac{\<\bm v,\bm u\>}{\norm{\bm v}^2}\bm v$.
+        \item \state Let $(V,\<,\>)$ be an inner product space over $\F$, $\bm u,\bm v\in V,\bm v\neq 0$. Then $P_{\bm v},P_{\bm v^\perp}$are linear maps, $P_{\bm v}(\bm v)=\bm v$, $\ker P_{\bm v}=\bm v^\perp$, $\im P_{\bm v}=\<\bm v\>$, $\ker P_{\bm v^\perp}=\<\bm v\>$, $\im P_{\bm v^\perp}=\bm v^\perp$, $P_{\bm v}\circ P_{\bm v}=P_{\bm v}$ and $P_{\bm v^\perp}\circ P_{\bm v^\perp}=P_{\bm v^\perp}$.
+        \item \define Let $(V,\<,\>)$ be an inner product space, $(\bm w_i)_1^k$ an ortonormal sequence in $V$, $W$ its span. Then a \emph{projection onto a subspace} $P_W:V\to V$ is defined as $P_W(\bm u)=\sum_{i=1}^kP_{\bm w_i}(\bm u)$.
+        \item \state Let $(V,\<,\>)$ be an inner product space, $(\bm w_i)_1^k$ an ortonormal sequence in $V$, $W$ its span. Then $\bm u\in W\Longleftrightarrow P_W(\bm u)=\bm u$, $\im P_W=W$, $P_W\circ P_W=P_W$, $\bm u-P_W(\bm u)\in W^\perp$, $\forall\bm u\in V:\norm{P_W(\bm u)}\leq\norm{\bm u}$ and $\forall\bm u\in V,\forall\bm v\in W:\norm{\bm u-P_W(\bm u)}\leq\norm{\bm u-\bm v}$.
+        \item \state Let $(V,\<,\>)$ be an inner product space, $W\leq V$ a subspace of a finite dimension. Then $W\oplus W^\perp=V$, $\ker P_W=W^\perp$, $\left(W^\perp\right)^\perp=W$ and if $V$ is of a finite ddimension, then $\dim W=\dim V-\dim W^\perp$.
+        \item \theor (Pythagora's). If $\bm u\perp\bm v$, then $\norm{\bm u+\bm v}^2=\norm{\bm u}^2+\norm{\bm v}^2$.
+        \item \theor (Schwarz inequality). Let $(V,\<,\>)$ be an inner product space, $\bm u,\bm v\in V$. Then $|\<\bm u,\bm v\>|\leq\norm{\bm u}\norm{\bm v}$, while equality holds if $\bm u$ and $\bm v$ are collinear.
+        \item \theor (Triangle inequality). Let $(V,\<,\>)$ be an inner product space, $\bm u,\bm v\in V$. Then $\norm{\bm u+\bm v}\leq\norm{\bm u}+\norm{\bm v}$.
+
+    \end{enumerate}
+
+    \textbf{XI. Orthogonalization, orthogonal diagonalization}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \theor (Gram–Schmidt process). Let $(V,\<,\>)$ be an inner product space and $B=(\bm u_1,\ldots,\bm u_n)$ its base. Then there exists an ortonormal base $C=(\bm w_1,\ldots,\bm w_n)$ of $V$, such that $\forall k\in\{1,\ldots,n\}:\<\bm u_1,\ldots,\bm u_k\>=\<\bm w_1,\ldots,\bm w_k\>$.
+        \item \note (Gram–Schmidt process). First we ortogonalize the base using $\bm v_k=\bm u_k-\sum_{i=1}^{k-1}P_{\bm v_i}(\bm u_k)$ and then we ortonormalize using $\bm w_i=\bm v_i/\norm{\bm v_i}$.
+        \item \state (Fourier's coefficients). Let $C=(\bm w_i)_1^n$ be an ortonormal base of an inner product space $(V,\<,\>)$. Then every vector $\bm\in V$ can be represented in respect to $C$ as $[\bm u]^C=\left(\<\bm w_1,\bm u\>,\ldots,\<\bm w_n,\bm u\>\right)^T\in\C^n$, where $\<\bm w_i,\bm u\>$ are called a \emph{Fourier's coefficient}.
+        \item \theor (Parselval's equality). Let $(V,\<,\>)$ be an inner product space of a finite dimension, $C=(\bm w_i)_1^n$ its ortonormal base and $\bm u\in V$. Then $\sum_{i=1}^n|\<\bm w_i,\bm u\>|^2=\norm{\bm u}^2$.
+        \item \theor (QR decomposition). Let $A\in\C^{m\times n}$ is a matrix with lineary independent columns. Then there exists just one $Q\in\C^{m\times n}$ and one $R\in\C^{m\times n}$ such, that $A=QR$ where $Q$ is an ortonormal set with respect to a standard scalar product on $\C^n$, and where $R$ is an upper triangular matrix with possitive numbers on diagonal (\emph{note that $R$ is formed from Fourier's coeff.}).
+        \item \define Square matrix $U\in\C^{n\times n}$, such that $U^+U=UU^+=E$ is called an \emph{unitary matrix}. If $U$ is real then its called an \emph{orthogonal matrix}.
+        \item \state If $U,V\in\C^{n\times n}$ are unitary matrices, then also $U^+=U^{-1}$ and $UV$ are unitary matrices.
+        \item \state Let $(V,\<,\>)$ be an inner product space, $B=(\bm v_i)_1^n$, $C=(\bm w_i)_1^n$ its ortonormal basis. Then $U:=[\Id]_B^C$ is an unitary matrix.
+        \item \define \emph{Linear operator} is linear map defined as $\mathbb{A}:V\to W$. An \emph{adjoint operator} to $A$, denoted as $A^*:W\to V$, is an operator such that $\forall \bm v\in V,\bm w\in W:\<\bm w,\mathbb A\bm v\>_W=\<\mathbb A^*\bm w,\bm v\>_V$.
+        \item \state Let $B=(\bm v_i)_1^n$ be an ortonormal base of $V$ and $C=(\bm w_i)_1^n$ of $W$, $A=[\mathbb A]_B^C\in\C^{m\times n}$. Then there exists $\mathbb A^*$ and $[\mathbb A^*]_C^B2=A^+\in\C^{n\times m}$.
+        \item \state Let $V,W,U$ be inner product spaces, $\mathbb A,\mathbb B:V\to W,\mathbb G:U\to V$ an operators, for which there exists an adjoint operators, $\alpha,\beta\in\C$. Then
+         $(\alpha\op{A}+\beta\op{B})=\bar{\alpha}\op{A}^*+\bar{\beta}\op B^*$, $(\op A\op G)^*=\op G^*\op A^*$,
+         $(\op A^*)^*=\op A$, $\ker\op A=(\im\op A^*)^\perp$, $\ker\op A^*=(\im\op A)^\perp$, $\ker\op A=\ker\op A^*\op A$. Moreover if $\dim V=n\in\N$, then $\rank(\op A)=\rank(\op A^*)$ and $\rank(\op A)=\rank(\op A^*\op A)$.
+        \item \define An operator $\op A:V\to V$ is called \emph{self-adjoint} if $\op A=\op A^*$, \emph{unitary} if $\op A\op A^*=\op A^*\op A=\Id$ and \emph{normal} if $\op A\op A^*=\op A^*\op A$.
+        \item \lemma Let $V$ be an inner product space of dimension $n$ and $(\bm w_1,\ldots,\bm w_k)$ an ortonormal sequence in $V$. Then this sequence can be completed into an ortonormal base $(\bm w_1,\ldots,\bm w_n)$ of $V$.
+        \item \theor (Schur decomposition/triangulation). Let $V$ be an inner product space of a finite dimension, $\op A:V\to V$ such that $A:=[\op A]_K^K\in\C^{n\times n}$. Then there exists an ortonormal basis $B$ in $V$ such, that $R:=[\op A]_B^B$ is an upper triangular matrix, $A=URU^+$, where $U=[\Id]_B^K$.
+        \item \theor (Ortonormal diagonalization of a normal operator). Let $V$ be an inner product space of a finite dimension. Then for an operator $\op A:V\to V$ there exists an ortonormal basis of $V$, with respect to it is matrix of $\op A$ diagonal, if and only if $\op A$ is normal.
+        \item \theor (Spetral decomposition). Let $\op A:V\to V$ be a normal operator, $\op P_\lambda:V\to V$ be an operator of orthogonal projection onto an eigenspace asiciated with eigenvalue $\lambda$. Then $\op A=\sum_{\lambda\in\sigma(\op A)}\lambda\op P_\lambda$.
+        \item \theor An operator $\op A:V\to V$ is self-adjoint if and only if all its eigenvalues are real.
+        \item \state If $\op A\in\R^{n\times n}$ is symmetric or $\op A\in\C^{n\times n}$ is hermitian, then there exists an ortogonal matrix $U$, such that $U^+AU$ is diagonal.
+        \item \state Let $V$ over $\C$ be an inner product space of a dimension $n$ and $\op U:V\to V$ be an
+         unitar operator. Then $\forall\bm v\in V:\norm{\op U\bm v}=\norm{\bm v}$, $\forall\bm v,\bm u\in V:\<\op U\bm v,\op U\bm u\>=\<\bm v,\bm u\>$. If $B$ is an ortonormal basis of $V$ then $U:=[\op U]_B^B$ is an unitar matrix. If $(\bm w_i)_1^n$ is an ortonormal basis of $V$ then also
+         $(\op U\bm w_i)_1^n$ is. $\op U$ is an normal operator whose eigenvalues lies on an unit circle.
+
+    \end{enumerate}
+
+    \textbf{XII. Singular value decomposition}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define If $(\bm v_1,\ldots,\bm v_n)$ is a set of vectors in an inner product space $(V,\<,\>)$ over $\F$ then a \emph{Gram matrix} of this set is $G\in\F^{n\times n}$, the Hermitian matrix of inner products, whose entries are given by $G_{ij}=\<\bm v_i,\bm v_j\>$.
+        \item \state Gram matrix of a set $(\bm v_1,\ldots,\bm v_n)$ is regular if and only if is this set lineary independent.
+        \item \define Let $A\in\C^{m\times n}$, then a matrix $A^\dagger\in\C^{n\times m}$ is called \emph{Moore–Penrose pseudoinverse} of $A$, if $AA^\dagger A=A$, $A^\dagger AA^\dagger=A^\dagger$ and if $AA^\dagger$ and $A^\dagger A$ are hermitian.
+        \item \state Let $A\in\C^{m\times n}$ be a matrix with lineary independent columns, then $A^\dagger =(A^+A)^{-1}A^+$ and $A^\dagger$ constitutes a left inverse $A^\dagger A=E$. However, if $A\in\C^{m\times n}$ is a matrix with lineary independent rows, then $A^\dagger =A^+(AA^+)^{-1}$ and $A^\dagger$ constitutes a right inverse $AA^\dagger=E$.
+        \item \state Let $A\in\C^{m\times n}$ be a matrix with lineary independent columns and $K$ a kanonical basis, then $[P_{\im A}]_K^K=AA^\dagger$. However, if $A\in\C^{m\times n}$ is a matrix with lineary independent rows and $K$ a kan. basis, then $[P_{\im A^+}]_K^K=A^\dagger A$.
+        \item \state Let $A\in\C^{m\times n}$ and matrices $B,C\in\C^{n\times m}$ be Moore–Penrose pseudoinverses of $A$. Then $B=C$.
+        \item \theor Let $A\in\C^{m\times n}, \bm b\in\C^m$. Then vector $A^\dagger\bm b$ is an approximated solution of system $A\bm x=\bm b$ which has the smallest possible norm.
+        \item \define An operator is called a \emph{possitively semidefinite} operator if all its eigenvalues are not negative.
+        \item \state An operator $\op B$ is possitively semidefinite if and only if $\<\bm v,\op B\bm v\>\geq 0$ for every $\bm v\in V$.
+        \item \define Let $\op B:V\to V$ be a possitively semidefinite operator, $C$ an ortonormal basis of $V$ and $D=U^+[\op B]_C^CU=\diag(\lambda_1,\ldots,\lambda_n)$ where $\lambda_i\in\sigma([\op B])$. Then a \emph{possitively semidefinite square root of $\op B$} is defined as $[\sqrt{\op B}]_C^C=U\diag (\sqrt{\lambda_1},\ldots,\sqrt{\lambda_n})U^+$.
+        \item \state Let $\op A:V\to V$ be an operator. Then $\op A^*\op A$ is a possitively semidefinite operator.
+        \item \define A \emph{modul of operator is defined as} $|\op A|:=\sqrt{\op A^*\op A}$.
+
+        %TODO: Finish this.
+    \end{enumerate}
+
+    \textbf{XIII. Quadratic forms, quadrics}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define Let $g$ be a billinear form on $V$. The map $Q_g:V\to\R$, defined by $Q_g(\bm u)=g(\bm u,\bm u)$, is called \emph{quadratic form} associated with $g$.
+        \item \define Let $g$ be a billinear form on $V$. Its \emph{symmetrization} and \emph{antisymmetrization} are defined $\forall\bm u,\bm v\in V$ by $g_S(\bm u,\bm v):=\frac{1}{2}(g(\bm u,\bm v)+g(\bm v,\bm u))$ and $g_A(\bm u,\bm v):=\frac{1}{2}(g(\bm u,\bm v)-g(\bm v,\bm u))$. Then $g(\bm u,\bm v)=g_S(\bm u,\bm v)+g_A(\bm u,\bm v)$.
+        \item \state The quadratic form $Q_g$ is conclusively deifned by symmetric part $g_S$ of $g$.
+        \item \theor (Sylvester's law of inertia). Let $B,C$ be two polar bases of quadratic form $Q_g$ on $V$. Then number of possitive, negative values and zeros are same on diagonals of $[g]_B$, $[g]_C$.
+        \item \define (Signature). For quadratic form $Q_g$ we define the \emph{signature} as $\sign Q_g=(p,q,n)$, where $p,q,n$ is a number of possitive, negative numbers and zeros on diagonal in any poalr basis of $Q_g$.
+        \item \define Let $G\in\R^{n\times n}$. We denote $G_k\in\R^{k\times k}$ a matrix created form $G$ by deleting last $n-k$ rows and columns.
+        \item \theor (Jacobi-Sylvester theorem). Let $g$ be a symmetric billinear form on $V$, $B=(\bm u_i)_1^m$ a basis ov $V$, such that $\forall k\in\{1,\ldots,m\},G:=[g]_B:\det G_k\neq 0$. Then $g$ has a polar basis $C=(\bm v_i)_1^m$ such, that $\bm v_k\sum_{j=1}^k r_{jk}\bm u_j$ where $R\in\R^{m\times m}$
+        is an upper triangular matrix, and $[g]_C=\diag(\frac{1}{\det G_1},\frac{\det G_1}{\det G_2},\ldots,\frac{\det G_{m-1}}{\det G_m})$. Therefore, a signature of $g$ is $(p,q,0)$ where $q$ is number of sign changes in $(1,\det G_1,\ldots,\det G_m)$.
+        \item \note By knowing a signature of a symmetric form $Q_g$, we can determine it polar form as $[Q_g]=\diag(1,\ldots,1,-1,\ldots,-1,0,\ldots)$.
+        \item \define \emph{Null set} of quadratic form $Q_g$ is a set defined by\\$N_g:=\{\bm v\in V|Q_g(\bm v)=0\}$.
+
+        % QUADRATIC FORMS
+
+        \item \define
+        \item \define
+        \item \define
+        \item \define
+        \item \state
+        \item \define
+        \item \theor
+
+    \end{enumerate}
+
+    \textbf{XIV. Jordan normal form}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XV. Tenzors}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XVI. Others}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+\end{multicols}
+\end{document}

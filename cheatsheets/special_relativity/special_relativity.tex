@@ -1,0 +1,216 @@
+\documentclass{article}
+\usepackage[a4paper, landscape, top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{xcolor}
+
+\usepackage{graphicx}\usepackage{lmodern}
+
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\setlength\parindent{0pt}
+%\usepackage{textgreek}
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Róbert Jurčo \hfill Special relativity cheatsheet} % Custom header text
+\fancyfoot[C]{\thepage} % Custom footer text
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm, wasysym}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\renewcommand\d{\mathrm d}
+
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arccoth}{arccoth}
+
+
+\begin{document}
+\begin{multicols}{3}
+
+    \centering{\large\textbf{I. PRINCIPES OF SPECIAL RELATIVITY}}
+
+    \begin{enumerate}
+        \item The laws of physics are invariant in all inertial frames of reference.
+        \item The speed of light in vacuum is the same for all observers, regardless of the motion of the light source or observer.
+    \end{enumerate}
+
+
+    \centering{\large\textbf{II. LORENTZ TRANSFORMATION}}
+
+    \begin{enumerate}
+        \item {\color{red} Michelson-Morley experiment.}
+        \item Lorentz factor $\gamma=(1-\frac{v^2}{c^2})^{-1/2}$ and relatative velocity $\beta=v/c$.
+        \item Lorentz transformation between frames $S'$ ad $S$ with relative vel. $v$ is $x'^\mu=\Lambda^\mu_{~\nu} x^\nu$. Where Lorentz boost $\Lambda$ takes form\\
+        $\begin{pmatrix}
+            ct'\\ x'\\ y' \\ z'
+        \end{pmatrix}
+        =\begin{pmatrix}
+            \gamma & -\beta\gamma & 0 & 0\\
+            -\beta\gamma & \gamma & 0 & 0\\
+            0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            ct\\ x\\ y \\ z
+        \end{pmatrix}$
+        \item $\Lambda^\alpha_{~\nu}\Lambda^{~\mu}_\alpha=\delta^\mu_\nu$ and $(\Lambda^\mu_{~\nu})^{-1}=\Lambda^{~\mu}_\nu$
+        \item Lorentz boost in direction $\vec n$ of magnitude $v$:\\
+            $ct'=\gamma\left(ct-\beta\vec n\cdot\vec r\right)$,\\
+            $\vec r'=\left[\vec r-(\vec r\cdot\vec n)\vec n\right]+\gamma\left[(\vec r\cdot\vec n)\vec n-\beta ct\vec n\right]$\\
+            where we used decomposition of $\vec r$,\\ $\vec r^{~\parallel}=(\vec r\cdot\vec n)\vec n$ and $\vec r^{~\perp}=\vec r-(\vec r\cdot\vec n)\vec n$.
+        \item $\beta=\tanh\xi$, $\gamma=\cosh\xi$ and $\beta\gamma=\sinh\xi$ where $\xi$ is rapidity.
+        \item
+        $\begin{pmatrix}
+            ct'\\ x'\\ y' \\ z'
+        \end{pmatrix}
+        =\begin{pmatrix}
+            \cosh\xi & -\sinh\xi & 0 & 0\\
+            -\sinh\xi & \cosh\xi & 0 & 0\\
+            0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            ct\\ x\\ y \\ z
+        \end{pmatrix}$
+        \item Time dilation $t=t_0\gamma$.
+        \item Length contraction $l=l_0/\gamma$.
+        \item Relativity of conplacemency $\Delta x=v\Delta t$.
+        \item Relativity of simultaneity $c\Delta t'=-\beta\gamma\Delta x$.
+        \item Transformation of 3-dim velocity: if $v$ is along $x$ axis:
+            $w'_x=\frac{w_x-v}{1-\frac{v}{c^2}w_x}$,
+            $w'_y=\frac{1}{\gamma}\frac{w_y}{1-\frac{v}{c^2}w_x}$.
+        \item Addition of vel. $u$ and $v$: $w=(u+v)\left(1+\frac{uv}{c^2}\right)$,
+        \item Hybrid velocity (distance in not-moving frame $S$ but proper time) can be greater then $c$. If $\vec w$ is velocity in $S$, then hybrid vel. is $\frac{\d x}{\d t'}=\vec w\gamma$.
+        \item Space time interval $\d s^2=-c^2\d t^2+\d x^2+\d y^2+\d z^2$.
+        \item Space-time interval is invariant under Lorentz transformation.
+    \end{enumerate}
+
+
+    \centering{\large\textbf{III. SPACETIME}}
+
+    \begin{enumerate}
+        \item Vectors transform as $\d x'^\mu=\frac{\partial x'^\mu}{\partial x^\nu}\d x^\nu$ (choosen so bc. we want $\d s$ as a vector). Especially $\d x'^\mu=\Lambda^\mu_{~\nu}\d x^\nu$.
+        \item Covectors transform as $\frac{\partial}{\partial x'^\mu}=\frac{\partial x^\nu}{\partial x'^\mu}\frac{\partial}{\partial x^\nu}$. Especially $\partial'_\mu=\Lambda_\mu^{~\nu}\partial_\nu$.
+        \item $\partial_\nu\d x^\mu=\d x^\mu\partial_\nu=\delta^\mu_\nu=\d x'^\mu\partial'_\nu=\partial'_\nu\d x'^\mu$
+        \item Metric tensor $g_{\mu\nu}$ (a value of metric tensor field in the given point) is a billinear, symmetric, nondegenerate tensor.
+        \item Metric tensor defines invariant dot product\\ $g'_{\mu\nu}V'^\mu V'^\nu=g_{\mu\nu}V^\mu V^\nu$.
+        \item $\d s^2=g_{\mu\nu}\d x^\mu\d x^\nu$
+        \item Metric tensor is invariant under Lorentz transformation $g_{\mu\nu}=g_{\alpha\beta}\Lambda^\alpha_{~\mu}\Lambda^\beta_{~\nu}$, but gen. transforms as  $g'_{\mu\nu}=\frac{\partial x^\alpha}{\partial x'^\mu}\frac{\partial x^\beta}{\partial x'^\nu}g_{\alpha\beta}$ (relation of ortogonality).
+        \item Sylvester's law of inertia: Signature\\ (number of +, -, 0 eigenvalues) of matrix is invariant under change of basis.
+        \item Inverse metric tensor: $g^{\mu\nu}:=\left(g^{-1}\right)^{\mu\nu}$,\\ $g^{\mu\alpha}g_{\alpha\nu}=g_{\nu\alpha}g^{\alpha\mu}=\delta^\mu_\nu$
+        \item Lowering/rising inds. $g_{\mu\nu}A^\nu=A_\mu$, $g^{\mu\nu}A_\nu=A^\mu$
+        \item $g_{\mu\nu}V^\mu W^\nu=V^\mu g_{\mu\nu}W^\nu=W^\nu V^\mu g_{\mu\nu}=V_\nu W^\nu=W^\nu V_\nu$
+        \item Partial gradient transforms as a covector only under linear transformations:\\
+            $\frac{\partial V'^\mu}{\partial x'^\nu}=\frac{\partial^2 x'^\mu}{\partial x^\alpha\partial x^\beta}\frac{\partial x^\beta}{\partial x'^\nu}V^\alpha+\frac{\partial x'^\mu}{\partial x^\alpha}\frac{\partial V^\alpha}{\partial x^\beta}\frac{\partial x^\beta}{\partial x'^\nu}$.
+        \item Dot product $g_{\mu\nu}V^\mu V^\nu$ is invariant $\Leftrightarrow$ trnasformation is linear and satisfy relation of orthogonality.
+        \item Metrix tensor of Minkowski spacetime \\cartesian: $\eta_{\mu\nu}=\text{diag}(-1,1,1,1)$\\cylindrical: $\eta_{\mu\nu}=\text{diag}(-1,1,\rho^2,1)$\\spherical: $\eta_{\mu\nu}=\text{diag}(-1,1,r^2,r^2\sin^2\theta)$
+        \item Dot product of two timelike vectors oriented into the future is always negatve.
+        \item Levi-Civita tensor $\epsilon_{ijk\ldots}$ is $1$ for even permutation of $\{1,2,3,\ldots\}$, $-1$ for odd permutation and zero otherwise. $\epsilon^{ijk\ldots}$ has opposite signs.
+        \item $\epsilon^{\alpha\beta\gamma\delta}=\eta^{\alpha i}\eta^{\beta j}\eta^{\gamma k}\eta^{\delta l}\epsilon_{ijkl}$
+    \end{enumerate}
+
+
+    \centering{\large\textbf{III. SPACETIME DIAGRAMS}}
+
+    \begin{enumerate}
+        \item
+    \end{enumerate}
+
+    \centering{\large\textbf{IV. RELATIVISTIC MECHANICS}}
+
+    \begin{enumerate}
+        \item Proper time $\tau$ along timelike wolrd line - time in a frame of the system.
+        \item Experimentaly is measured only the proper time.
+        \item $\d s=c\d\tau$, $\d t=\gamma\d\tau$ hence $\Delta\tau=\int\frac{\d s}{c}=\int\frac{\d t}{\gamma(t)}$
+        \item 4-velocity: $u^\mu=\frac{\d x^\mu}{\d\tau}$ and $u'^\mu=\Lambda^\mu_{~\nu}u^\nu$
+        \item Minkowsi spacetime $\eta_{\mu\nu}u^\mu u^\nu=-c^2$.
+        \item $u^\mu=\gamm\left(c,\vec v\right)^T$, where $\vec v=\d\vec x/\d t$ is classical 3-vel.
+        \item 4-acceleration: $a^\mu=\frac{\d u^\mu}{\d\tau}$ and $a'^\mu=\Lambda^\mu_{~\nu}a^\nu$
+        \item $a^\mu\perp u^\mu$ for every point of timelike world line, $\eta_{\mu\nu}a^\mu u^\nu=0$
+        \item If $a^\mu=0$ in one ref. frame, then it is in all ref. frames if transformation is linear.
+        \item Invariant mass $m_0$ is equal to the mass in the rest frame of the point mass.
+        \item Relativistic mass $m=m_0\gamma$.
+        \item Conservation of \textbf{3-dim} lin. momentum works the same way as in classical mechanics, $\sum_{before} m_iv_i=\sum_{after} m_iv_i$, but with relativistic masses and with relat. addition of velocities.
+        \item Inavriant mass of resultant body after inealsitc collision is bigger then invariant masses of coliding bodies.
+        \item 4-momentum: $p^\mu=m_0u^\mu=\left(c,\vec p\right)^T$
+        \item 4-force: $F^\mu=\frac{\d p^\mu}{\d\tau}=\gamma\frac{\d p^\mu}{\d t}=\gamma\left(c\frac{\d m}{\d t},\vec f\right)^T$, where $\vec f=\frac{\d\vec p}{\d t}$ is 3-force.
+        \item $\frac{\d p^\mu}{\d\tau}=\frac{\d m_0}{\d\tau}u^\mu+m_0a^\mu$
+        \item 3-force: $\frac{\d\vec p}{\d t}=m\vec a+\left(m_0\gamma^2\frac{\vec v\cdot\vec a}{c^2}+\frac{\d m_0}{\d t}\right)\gamma\vec v$
+        \item $\frac{\d\gamma}{\d t}=\gamma^3\frac{\vec v\cdot\vec a}{c^2}$
+        \item Mag. field (Lorenz force) $\vec v\cdot\vec a=0$ and $\frac{\d m_0}{\d t}=0$.
+        \item 4-forces for which $\frac{\d m_0}{\d t}=0$ are spacelike.
+        \item If $\d m_0/\d t=0$ then $\vec f_\perp=m\vec a_\perp$ and $\vec f_\parallel=m\gamma^2\vec a_\parallel$.
+        \item $\eta_{\mu\nu}F^\mu u^\nu=-c^2\d m_0/\d\tau$.
+        \item $c^2\d m=\frac{1}{\gamma}c^2\d m_0+\vec f\cdot\d\vec r$.
+        \item $E=mc^2=m_0c^2+T=\sqrt{(m_0c^2)^2+(pc)^2}$, where $p=|\vec p|$.
+        \item Mass shell (3-dim hyperboloid):\\ $m^2c^2-p^2=m_0^2c^2$
+        \item If $p^2\ll m_0^2c^2$ then $E=m_0c^2+p^2/2m_0$.
+        \item For masseles objects $|\vec v|=c$ and $E=T=pc$, or in wave-language $E=\hbar\omega$.
+        \item {\color{red} Covariant rel. for $E$}
+        \item $v>c$, $v=c$, $v<c$ is invariant.
+    \end{enumerate}
+
+
+    \centering{\large\textbf{V. ELECTRODYNAMICS IN VACUUM}}
+
+    \begin{enumerate}
+        \item Charge density $\rho=\rho_0\gamma$
+        \item 4-current: $J^\mu=\left(\rho c,\vec J\right)^T=\rho_0u^\mu$, where $\vec J=\rho\vec v$
+        \item $\eta_{\mu\nu}J^\mu J^\nu=-c^2\rho_0^2$.
+        \item Gradient: $\partial_\mu=\left(\frac{1}{c}\frac{\partial}{\partial t},\nabla\right)^T$, $\partial^\mu=\frac{\partial}{\partial x_\mu}$, $\partial_\mu=\frac{\partial}{\partial x^\mu}$, $\partial_\mu\partial^\nu=\Delta-\frac{1}{c^2}\frac{\partial^2}{\partial t^2}$.
+        \item 4-potential: $A^\mu=\left(\frac{\varphi}{c},\vec A\right)^T$.
+        \item EM-field tensor: $F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$ or\\$F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$.
+        \item $F_{\mu\nu}=
+            \begin{pmatrix}
+                0 & -E_x/c & -E_y/c  & -E_z/c\\
+                E_x/c & 0 & B_z & -B_y\\
+                E_y/c & -B_z & 0 & B_x\\
+                E_z/c & B_y & -B_x & 0
+            \end{pmatrix}$\\
+            Rising indicies just swaps the signs of zeroth row and column.
+        \item Continuity eq.: $\partial_\mu J^\mu=0$.
+        \item 1st. series of Maxwell eq. $\partial_\nu F^{\mu\nu}=\mu J^\mu$.
+        \item 2st. series of Maxwell eq. $\partial_{\left[\alpha\right }F_{\left \beta\gamma\right]}=0$.
+        \item Maxwell eqs. are invariant under any gauge transformation $\tilde A_\mu=A_\mu+\partial_\mu\chi$.
+        \item Lorenz gauge: $\partial_\mu\tilde A^\mu=0$, hence\\ $\partial_\mu\partial^\mu\chi=-\partial_\mu A^\mu$.
+        \item In Lorenz gauge 1st. s. of Maxwell eq. gives us wave equation $\partial_\mu\partial^\mu A^\nu=-\mu J^\nu$.
+        \item $\partial_\mu\partial^\mu F_{\alpha\beta}=\mu\left(\partial_\beta J_\alpha-\partial_\alpha J_\beta\right)$
+        \item Hodge dual elmag. tensor: $(*F)^{\mu\nu}=\frac{1}{2}\epsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}$.
+        \item $(*F)^{\mu\nu}=
+            \begin{pmatrix}
+                0 & -B_x & -B_y & -B_z\\
+                B_x & 0 & E_z/c & -E_y/c\\
+                B_y & -E_z/c & 0 & E_x/c\\
+                B_z & E_y/c & -E_x/c & 0
+            \end{pmatrix}$\\
+        \item {\color{red} signs notation chcek} $F_{\rho\sigma}F^{\rho\sigma}=2B^2-2E^2/c^2$, $(*F)_{\rho\sigma}(*F)^{\rho\sigma}=-2B^2+2E^2/c^2$, $F_{\rho\sigma}(*F)^{\rho\sigma}=\frac{4}{c}\vec E\cdot\vec B$.
+        \item {\color{red} signs notation chcek} Using notation where Levi-Civita symbol has indicies up $\epsilon^{ijkl}$, $*F$ will have all signs opposite and $F_{\rho\sigma}(*F)^{\rho\sigma}=-\frac{4}{c}\vec E\cdot\vec B$.
+    \end{enumerate}
+
+
+    \centering{\large\textbf{\color{red} OO. SOME OTHER SHIT}}
+
+    \begin{enumerate}
+        \item Thomas precession
+        \item Relativistic disk
+        \item Bell's spaceship paradox
+        \item Ehrenfest paradox
+
+    \end{enumerate}
+
+
+\end{multicols}
+\end{document}

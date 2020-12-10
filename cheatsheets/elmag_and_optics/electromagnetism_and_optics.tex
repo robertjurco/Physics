@@ -1,0 +1,190 @@
+\documentclass{article}
+\usepackage[a4paper, landscape, top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{xcolor}
+
+\usepackage{graphicx}\usepackage{lmodern}
+
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\setlength\parindent{0pt}
+%\usepackage{textgreek}
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Róbert Jurčo \hfill Electromagnetism and electrodynamics cheatsheet} % Custom header text
+\fancyfoot[C]{\thepage} % Custom footer text
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm, wasysym}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\renewcommand\d{\mathrm d}
+
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arccoth}{arccoth}
+
+% TENSOR
+\usepackage{amsmath}
+
+\DeclareFontFamily{OMS}{oasy}{\skewchar\font48 }
+\DeclareFontShape{OMS}{oasy}{m}{n}{%
+         <-5.5> oasy5     <5.5-6.5> oasy6
+      <6.5-7.5> oasy7     <7.5-8.5> oasy8
+      <8.5-9.5> oasy9     <9.5->  oasy10
+      }{}
+\DeclareFontShape{OMS}{oasy}{b}{n}{%
+       <-6> oabsy5
+      <6-8> oabsy7
+      <8->  oabsy10
+      }{}
+\DeclareSymbolFont{oasy}{OMS}{oasy}{m}{n}
+\SetSymbolFont{oasy}{bold}{OMS}{oasy}{b}{n}
+
+\DeclareMathSymbol{\smallleftarrow}     {\mathrel}{oasy}{"20}
+\DeclareMathSymbol{\smallrightarrow}    {\mathrel}{oasy}{"21}
+\DeclareMathSymbol{\smallleftrightarrow}{\mathrel}{oasy}{"24}
+
+\newcommand{\tensor}[1]{\overset{\scriptscriptstyle\smallleftrightarrow}{#1}}
+% END TENSOR
+
+\begin{document}
+\begin{multicols}{3}
+
+    \centering{\large\textbf{I. VECTOR ANALYSIS}}
+
+    \begin{enumerate}
+        \item $\bm a\cdot(\bm b\times\bm c)=\bm b\cdot(\bm c\times\bm a)=\bm c\cdot(\bm a\times\bm b)$
+        \item $\bm a\times(\bm b\times\bm c)=\bm b(\bm a\cdot\bm c)-\bm c(\bm a\cdot\bm b)$
+        \item $\nabla(fg)=f\nabla g+g\nabla f$
+        \item $\nabla\cdot(f\bm F)=f\nabla\cdot\bm F+\bm F\cdot\nabla f$
+        \item $\nabla\times(f\bm F)=f\nabla\times\bm F-\bm F\times\nabla f$
+        \item $\nabla(\bm F_1\cdot\bm F_2)=(\bm F_1\cdot\nabla)\bm F_2+(\bm F_2\cdot\nabla)\bm F_1+\bm F_1\times(\nabla\times\bm F_2)+\bm F_2\times(\nabla\times\bm F_1)$
+        \item $\nabla\cdot(\bm F_1\times\bm F_2)=\bm F_2\cdot(\nabla\times\bm F_1)-\bm F_1\cdot(\nabla\times\bm F_2)$
+        \item $\nabla\times(\bm F_1\times\bm F_2)=(\bm F_2\cdot\nabla)\bm F_1-(\bm F_1\cdot\nabla)\bm F_2+\bm F_1\nabla\cdot\bm F_2-\bm F_2\nabla\cdot\bm F_1$
+        \item $\nabla\times\bm R=0$, $\nabla\cdot\bm R=\partial_x R_x+\partial_y R_y+\partial_z R_z$\\ $\nabla R=\bm R/R$, $\nabla R^n=nR^{n-2}\bm R$, $\nabla(\bm c\cdot\bm R)=\bm c$\\
+        $\nabla\times(\bm R/R)=0$
+        \item $\nabla((\bm c\cdot\bm R)/R)=(R^2\bm c-(\bm c\cdot\bm R)\bm R)/R^3$.
+        \item Gauss's theorem: $\int_V(\nabla\cdot\bm a)\;\d V=\oint_{\partial V}\bm a\cdot\d\bm S$
+        \item Stokes's theorem: $\int_S(\nabla\times\bm a)\cdot\d\bm S=\oint_{\partial S}\bm a\cdot\d\bm l$
+        \item Green's theorem:\\$\oint_{\partial V}(\varphi\nabla\psi-\psi\nabla\varphi)\cdot\d\bm S=\int_V(\varphi\Delta\psi-\psi\Delta\varphi)\;\d V$
+    \end{enumerate}
+
+    \centering{\large\textbf{II. ELECTROSTATICS}}
+
+    \begin{enumerate}
+        \item Coulomb's law: $\bm F=\frac{1}{4\pi\epsilon}\frac{Q_1Q_2}{r^3}\bm r$, $\Pi=\frac{1}{4\pi\epsilon}\frac{Q_1Q_2}{r}$, Kepler's law are applicable
+        \item Intensity and potential of el. field\\ $\bm E=\frac{1}{4\pi\epsilon}\frac{Q}{r^3}\bm r$, $\varphi=\frac{1}{4\pi\epsilon}\frac{Q}{r}$, $\bm E=-\nabla\varphi$
+        \item Gauss's law: $\oint_{\partial V}\bm E\cdot\d\bm S=Q/\epsilon_0$, $\nabla\cdot\bm E=\rho/\epsilon_0$
+        \item Conservative force: $\oint_{\partial S}\bm E\cdot\d\bm l=0$
+        \item There is no stable system of charges in the\\vacuum.
+        \item Poisson equation: $\nabla\varphi=-\rho/\epsilon_0$,\\Laplace equation free space $\nabla\varphi=0$.
+        \item $\varphi(\bm r)=\frac{1}{4\pi\epsilon_0}\int_{V'}\frac{\rho(\bm {r'})}{|\bm r-\bm{r'}|}\d V'$\\$\bm E(\bm r)=\frac{1}{4\pi\epsilon_0}\int_{V'}\frac{(\bm r-\bm{r'})\rho(\bm {r'})}{|\bm r-\bm{r'}|^3}\d V'$
+        \item Multipole expansion: $$\varphi(\bm r)=\frac{1}{4\pi\epsilon_0}\frac{1}{r}\sum_{i=1}^\infty\int_{V'}\left[\frac{r'}{r}\right]^i\rho(\bm {r'})P_i(\cos\alpha)\d V'$$
+        where $P_i(x)$ is $i$-th Legendre polynomial and $\cos\alpha$ is the angle between $\bm r'$ and $\bm r$.
+        \item Electric dipole moment $\bm p=Q\bm l=\sum Q_i\bm r_i$
+        \item El. dipole: $\varphi(\bm r)=\frac{1}{4\pi\epsilon}\frac{\bm p\cdot\bm r}{r^3}$\\$\bm E(\bm r)=\frac{1}{4\pi\epsilon}\left[\frac{3\bm r(\bm p\cdot\bm r)}{r^5}-\frac{\bm p}{r^3}\right]$
+        \item z-axis of dipole, $\tan\theta=x/z$:\\ $E_x=\frac{P}{4\pi\epsilon_0}\frac{3\sin\theta\cos\theta}{r^3}$, $E_z=\frac{P}{4\pi\epsilon_0}\frac{3\cos^2\theta-1}{r^3}$
+        \item Energy of dipole: $W=-\bm p\cdot\bm E$
+        \item Force acting on a dipole: $F_i=p_j\partial_i E_j$,\\$\bm F=(\bm p\cdot\nabla)\bm E$, for constant dipole $\bm F=\nabla(\bm p\cdot\bm E)$
+        \item Torque acting on a dipole: $\bm\tau=\bm p\times\bm E$
+    \end{enumerate}
+
+
+    \centering{\large\textbf{III. ELECTRIC FIELDS IN MATTER}}
+
+    \begin{enumerate}
+        \item $\rho_{total}=\rho_{free}+\rho_{bounded}$
+        \item Polarization $\bm P=N\bm p=N\tensor\beta\bm E=\epsilon_0\tensor\chi\bm E$
+        \item Tensor of suspecibility $\tensor\chi=N\tensor\beta/\epsilon_0$\\
+        where $\tensor\beta$ is atomic polarizability\\
+        \begin{tabular}{|c|c|c|}
+            \hline
+             & izotrop. & unizotrop. \rule{0pt}{2ex}\\\hline
+            homogenous & $\chi$ & $\tensor\chi$ \rule{0pt}{2ex}\\\hline
+            non-homog. & $\chi(\bm r)$ & $\tensor\chi(\bm r)$ \rule{0pt}{2ex}\\\hline
+        \end{tabular}
+        \item Electric induction: $\bm D=\epsilon_0\bm E+\bm P=\tensor\epsilon\bm E$, where $\tensor\epsilon=\epsilon_0(1+\tensor\chi)$
+        \item $\nabla\cdot\bm P=-\rho_{b}/\epsilon_0$, $\oint_{\partial V}\bm P\cdot\d\bm S=-Q_{b}/\epsilon_0$
+        \item BOunded charge: $Q_{b}=\bm P\cdot\bm S$, $\sigma_b=\bm p\cdot\bm n$
+        \item Gauss's law: $\oint_{\partial V}\bm D\cdot\d\bm S=Q_{free}$, $\nabla\cdot\bm D=\rho_{free}$
+        \item Conservative force: $\oint_{\partial S}\bm E\cdot\d\bm l=0$
+        \item Boundary of dielectrics:\\$E_{2t}=E_{1t}$, $D_{2n}-D_{1n}=\sigma_{free}$, where $\sigma_{free}$ is free charge surface density on the boundary.
+        \item Inside a conductor $\bm E=0$.
+        \item Outside of conductor the electric field lines are perpendicular to the surface, beggining or ending at charges on the surface.
+        \item Induced charges resides entirely on the surface of the conductor and the total charge is usually zero. It is nonzero if conductor is grounded or infinite.
+        \item Whatever be the charge and field configuration outside, any cavity in a conductor remains shielded from outside electric influence.
+        \item Method of image charges.
+
+        \item Clausiuss-Mossotti eq. $\frac{\epsilon-1}{\epsilon+2}=\frac{N\alpha}{3\epsilon_0}=\frac{\chi}{\chi+3}$, \\where $\alpha$ is molecular polarizability.
+    \end{enumerate}
+
+
+    \centering{\large\textbf{IV. MAGNETOSTATICS}}
+
+    \begin{enumerate}
+
+    \end{enumerate}
+
+    \centering{\large\textbf{V. MAGNETIC FIELDS IN MATTER}}
+
+    \begin{enumerate}
+
+    \end{enumerate}
+
+    \centering{\large\textbf{VI. MAGNETOSTATICS}}
+
+    \begin{enumerate}
+
+    \end{enumerate}
+
+    \centering{\large\textbf{VII. ELECTRIC CURRENT}}
+
+    \begin{enumerate}
+
+    \end{enumerate}
+
+    \centering{\large\textbf{II. CONVERSATION LAWS}}
+
+    \begin{enumerate}
+
+    \end{enumerate}
+
+    \centering{\large\textbf{VIII. NONSTATIONARY FIELDS}}
+
+    \begin{enumerate}
+
+    \end{enumerate}
+
+    \centering{\large\textbf{IX. TRANSPORTNI JEVY}}
+
+    \begin{enumerate}
+
+    \end{enumerate}
+
+    \centering{\large\textbf{X. ELECTROMAGNETIC WAVES}}
+
+    \begin{enumerate}
+
+    \end{enumerate}
+
+    \centering{\large\textbf{XI. RADIATION}}
+
+    \begin{enumerate}
+
+    \end{enumerate}
+
+\end{multicols}
+\end{document}

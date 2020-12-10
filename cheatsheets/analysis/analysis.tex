@@ -1,0 +1,362 @@
+\documentclass{article}
+\usepackage[a4paper, landscape, margin=10px]{geometry}
+%TODO: Configure geometry package to fit for printing.
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, wasysym}
+
+\newcommand{\<}{\left<}
+\renewcommand{\>}{\right>}
+\renewcommand{\d}{\;\text{d}}
+\renewcommand{\o}{\text{o}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\define}{\textbf{Def. }}
+\newcommand{\lemma}{\textbf{Lemma. }}
+\newcommand{\state}{\textbf{St. }}
+\newcommand{\theor}{\textbf{Th. }}
+\newcommand{\note}{\textbf{Note. }}
+
+\begin{document}
+\begin{multicols}{3}
+
+    \textbf{Cheatsheet on mathematical analysis.}\\
+    \indent Author/s: \emph{R\'obert Jur\v{c}o}\\
+    \indent Date: 19.3.2020\\
+    \indent Last modified at: 24.3.2020\\
+
+    \textbf{I. Notes}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+        \item \define = definition, \lemma = Lemma, \theor = theorem, \state = statement, \note = note
+    \end{enumerate}
+
+    %TODO: Add name to every theorem/definition. Add colors to names of theorems, definitions.
+
+    \textbf{II. Introduction}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{II. Cardinality}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define (Cardinality of sets). Let $A,B$ be two sets.\\(1) $A$ and $B$ have the \emph{same cardinality}, $m(A)=m(B)$, if there exists a bijection from $A$ to $B$,\\(2) $A$ has \emph{cardinality less than or equal to} the cardinality of $B$, $m(A)\leq m(b)$, if there exists an injective function from $A$ into $B$,\\(3) $A$ has cardinality \emph{strictly less} than the cardinality of $B$, $m(A)<m(B)$, if $m(A)=m(B)$ and $m(A)\leq m(B)$ do not hold.
+        \item \theor (Cantor-Bernsstein theorem). Let $A,B$ be two sets. If $m(A)\leq m(B)$ and $m(B)\leq m(A)$ then $m(A)=m(B)$.
+        \item \state Every infinite subset of $\N$ has same cardinality as $\N$, $\aleph_0:=m(\N)$.
+        \item \state There can't be an infinite set that has smaller cardinality then $\aleph_0$.
+        \item \define (Finite, countable and uncountable sets).\\(1) Set with cardinality less than $\aleph_0$ is a \emph{finite set},\\(2) set that has cardinality $\aleph_0$, is a \emph{countably infinite},\\(3) set with cardinality greater than $\aleph_0$, is \emph{uncountable}.r
+        \item \note (Cantor diagonalization). Consists of ordering a set $A$ in a way $(\forall a_{ij\ldots}\in A\;|\;i+j+\ldots=n)_n^\infty$. From there we can see that rational numbers, $\Q\in\N^2$, are countable.
+        \item \state Set $\R$ is uncountable, $m(\R)=2^{\aleph_0}$ and is called the cardinality of continuum.
+        \item \state Irrational numbers are uncountable.
+
+    \end{enumerate}
+
+    \textbf{III. Limits I, continuity, derivatives}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{IV. Limits II}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{V. Primitive functions}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{VI. Continuous and differentiable functions}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{VII. Taylor's polynomial}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define Let $f:\R\to\R,x_0\in\R,n\in\N_0$ and $f^{(n)}(x_0)\in\R$. Then a polynomial $P_n(x)=\sum_{k=0}^n\frac{f^{(k)}}{k!}(x-x_0)^k$ is called a \emph{Taylor's polynomial} of degree $n$ asociated with the function $f$ at $x_0$.
+        \item \theor (Peano theorem). Let $f:\R\to\R,x_0\in\R,n\in\N$  and $f^{(n)}(x_0)\in\R$. Then there exists just one polynomial $Q_n$ of the maximum $n$-th degree, such that $f(x)-Q_n(x)=o((x-x_0)^n)$. Moreover, $Q_n$ is a Taylor's polynomial.
+        \item \theor Let $f:\R\to\R,x>x_0,n\in\N_0$ and $f$ has a finite $n-$-th derivative at $[x_0,x]$ and $n+1$-th derivative at $(x_0,x)$. Let $\Phi:\R\to\R$ to has a finite non-zero derivative at $(x_0,x)$ and to be continuous at $[x_0,x]$. Then there esists $\xi\in(x_0,x)$ such, that $R_{n+1}=\frac{(x-\xi)^n}{n!}\frac{\Phi(x)-\Phi(x_0)}{\Phi'(\xi)}f^{(n+1)}(\xi)$ is called a \emph{remainder} of Taylor's polynomial.\\
+        \item \state (Lagrange's remainder). Let $\Phi(t)=(x-t)^{n+1}$ from remainder theorem. Then $R_{n+1}=\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$.
+        \item \state (Cauchy's remainder). Let $\Phi(t)=t$ from remainder theorem. Then $R_{n+1}=\frac{f^{(n+1)}(x_0+\Theta(x-x_0))}{n!}(1-\Theta)^n(x-x_0)^{n+1}$ where $\Theta:=\frac{\xi-x_0}{x-x_0}\in(0,1)$.
+        %TODO: The necessary condition of global extremes.
+        %TODO: Exercise 6.8.19
+        \item \state Maclaurin series for basics functions:\\
+        $e^x=\sum_{k=0}^n\frac{x^k}{k!}+\o(x^n)$\hfill$\forall x\in\R\;\qquad$\\
+        $\cos x=\sum_{k=0}^n(-1)^k\frac{x^{2k}}{(2k)!}+\o(x^{2n+1})$\hfill$\forall x\in\R\;\qquad$\\
+        $\sin x=\sum_{k=0}^n(-1)^k\frac{x^{2k+1}}{(2k+1)!}+\o(x^{2n+2})$\hfill$\forall x\in\R\;\qquad$\\
+        $\ln(1+x)=\sum_{k=0}^n(-1)^{k-1}\frac{x^k}{k}+\o(x^n)$\hfill$\forall x\in(-1,1]$\\
+        $(1+x)^\alpha=\sum_{k=0}^n{\alpha\choose k}x^k+\o(x^n)$\hfill$\forall x\in(-1,1)$\\
+        where $n\in\N,\alpha\in\R$ and ${\alpha\choose k}=\frac{\alpha(\alpha-1)\ldots(\alpha-k+1)}{k!}$.
+        %TODO: How to calculate comlicated series. Add, multiply in divide them.
+
+    \end{enumerate}
+
+    \textbf{VIII. Newton's and Riemann's integral}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{IX. Ordinary differerntial equations}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define (ODR). Let $n\in\N$ and $f:\R^{n+2}\to\R$. Then $f(x,y,y',\ldots,y^{(n)})=0$ is called \emph{scalar ordinary differential equation} of $n$-th order. Function $y:(a,b)\to\R$ is called a \emph{solution of ODR} $f(x,y,y',\ldots,y^{(n)})=0$, if $y$ has own derivatives of $n$-th order at $(a,b)$ and $\forall x\in(a,b):f(x,y,y',\ldots,y^{(n)})=0$.
+        \item \define (System of ODR of 1st order). Let $\bm F:\R^{m+1}\to\R^m$. Then $\bm y'=\bm F(x,\bm y)$ is called a \emph{system of ODR of 1st order} with solution $\bm y:(a,b)\to\R^m$ that has own derivatives of $n$-th order at $(a,b)$ and $\forall x\in(a,b):\bm y'=\bm F(x,\bm y)$.
+        \item \define (Cauchy problem). Let $\bm F:\R^{m+1}\to\R^m$. A \emph{Cauchy problem} for an equation $\bm y'=\bm F(x,\bm y)$ at $(a,b)$ asks for its solution $\bm y:\R^m\to\R$ that obeys $\forall x\in(a,b):\bm y'=\bm F(x,\bm y)$ and $\bm y(x_0)=\bm y_0$, where $x_0\in(a,b)$ and $\bm y_0\in{\mathcal D_{\bm F}}\subset\R^m$ are given values.
+        
+
+    \end{enumerate}
+
+    \textbf{X. Series}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define Let $\{a_k\}\subset\R$ be a sequence. Then $\sum_{k=1}^\infty a_k$ is denoting a (number) \emph{series}. Number $s_n=\sum_{k=1}^n a_k$ is called the $n$-th \emph{partial sums}.
+        \item \define The series is \emph{convergent} if $\lim_{n\to\infty}s_n\in\R$ or $\C$, is \emph{divergent} if $\lim_{n\to\infty}|s_n|\to\infty\in\R^*$ or $\C^*$, or otherwise is \emph{oscillating}.
+        \item \note If series has only non-negative terms, it is convergent or divergent.
+        \item \note A change in finite number of finite terms does not change a convergence of series, so we can cut off the beggining of series to have a series which can be tested by convergence tests.
+        %TODO: Telescopic, geometric, harmonic series.
+        \item \theor (The necessary condition of convergence). Let $\sum_{k=1}^\infty a_k$ be convergent. Then $lim_{k\to\infty}a_k=0$.
+        \item \theor (B-C condition for series). Series $\sum_{k=1}^\infty a_k$ is convergent if it obeys B-C condition: $\forall\epsilon>0,\exists n_0\in\N,\forall n\in\N\cap[n_o,\infty),\forall p\in\N:|\sum_{k=n+1}^{n+p}a_k|<\epsilon$.
+        \item \theor (Arithemtic of series). Let $\sum_{k=1}^\infty a_k=A\in\R^*,\sum_{k=1}^\infty b_k=B\in\R^*,\alpha,\beta\in\R$. Then $\sum_{k=1}^\infty(\alpha a_k+\beta b_k)=\alpha A+\beta B$, when right side is meaningfull.
+        \item \define A series $\sum_{k=1}^\infty a_k$ is convergent \emph{absolutely} if $\sum_{k=1}^\infty |a_k|$ is convergent, and is convergent \emph{not-absolutely} if  if $\sum_{k=1}^\infty a_k$ is convergent $\sum_{k=1}^\infty |a_k|$ is not.
+        \item \theor If $\sum_{k=1}^\infty a_k$ is convergent absolutely, then is also clasically.
+        %TODO: Make separated section for non-negative series?
+        \item \define Let $\{a_n\}\subset[0,\infty)$ be a sequence. Then $\sum_{k=1}^\infty(-1)^ka_k$ is called and \emph{alternating} series.
+        \item \theor (Leibniz criterion). Let $\{a_n\}$ be non-negative non-increasing sequence. Then $\sum_{k=1}^\infty(-1)^ka_k$ is convergent $\Longleftrightarrow$ $\lim_{k\to\infty}a_k=0$.
+        %TODO: Important results 1/k^2 .. to have somethink to compare with.
+
+        % NON-NEGATIVE SERIES
+
+        \item \theor (Comparison criterion). Let $a_k,b_k\subset\R$ such, that $\exists k_0\in\N,\exists C\in\R,\forall k\geq k_0:|a_k|\leq C|b_k|$.\\Then, if $\sum_{k=1}^\infty b_k$ is absolutely convergent $\Rightarrow$ $\sum_{k=1}^\infty a_k$ is convergent (also absolutely).\\
+        And, if $\sum_{k=1}^\infty a_k$ is divergent $\Rightarrow$ $\sum_{k=1}^\infty b_k$ is divergent.
+        \item \theor (Ratio comparison criterion). Let $a_k,b_k\subset(0,\infty)$ such, that $\exists k_0\in\N\forall k\geq k_0:a_{k+1}/a_k\leq b_{k+1}/b_k$.\\Then, if $\sum_{k=1}^\infty b_k$ is convergent $\Rightarrow$ $\sum_{k=1}^\infty a_k$ is convergent. And, if $\sum_{k=1}^\infty a_k$ is divergent $\Rightarrow$ $\sum_{k=1}^\infty b_k$ is divergent.
+        \item \theor (Limiting comparison criterion). Let $a_k,b_k\subset(0,\infty),k_0\in\N$ and $lim_{k\to\infty}a_k/b_k\in(0,\infty)$. Then $\sum_{k=1}^\infty b_k$ is convergent $\Longleftrightarrow$ $\sum_{k=1}^\infty a_k$ is convergent. \\
+        Moreover, if $a_k,b_k\subset(0,\infty),k_0\in\N$ and $lim_{k\to\infty}a_k/b_k\in[0,\infty)$. Then $\sum_{k=1}^\infty b_k$ is convergent $\Longrightarrow$ $\sum_{k=1}^\infty a_k$ is convergent.
+        %TODO: non-increasing on $[a,\infty]$ or non-increasing on $[a,\infty)$, open at infty or closed???
+        \item \theor (Integral criterion). Let $a\in\N$ and $f:\R\to\R$ is continuous, possitive and non-increasing on $[a,\infty]$, Then $\sum_{k=a}^\infty f(k)$ is convergent $\Longleftrightarrow$ $(\mathcal N)\int_a^\infty f\d x\in\R$.
+        %TODO: 1/x^\alpha is convergent for \alpha>1
+        \item \theor (Chauchy's root crit.) Let $\{a_k\}\subset[0,\infty),k_0\in\N$.\\
+        (1) $\exists q\in[0,1),\forall k>k_0:\sqrt[k]{a_k}\leq q\Rightarrow\sum_{k=1}^\infty a_k$ converges,\\
+        (2) $\forall k>k_0:\sqrt[k]{a_k}\geq 1\Longrightarrow\sum_{k=1}^\infty a_k$ diverges.
+        \item \theor (Limiting Cauchy's root crit.) Let $\{a_k\}\subset[0,\infty)$.\\
+        If $\lim_{k\to\infty}\sqrt[k]{a_k}<1$, the series converges.\\If $\lim_{k\to\infty}\sqrt[k]{a_k}>1$,  the series diverges.
+        %Next \textbf{Th.} is there for TECH purposes - nicer look in pdf.
+        \item \textbf{Th.}(d'Alembert's ratio crt.) Let $\{a_k\}\subset(0,\infty),k_0\in\N$.\\
+        (1) $\exists q\in[0,1),\forall k>k_0:\frac{a_{k+1}}{a_k}\leq q\Rightarrow\sum_{k=1}^\infty a_k$ converges.\\
+        (2) $\forall k>k_0:\frac{a_{k+1}}{a_k}\geq 1\Rightarrow\sum_{k=1}^\infty a_k$ diverges.
+        \item \theor (Limiting ratio criterion). Let $\{a_k\}\subset(0,\infty)$.\\
+        If $\lim_{k\to\infty}\frac{a_{k+1}}{a_k}<1$, the series converges,\\
+        If $\lim_{k\to\infty}\frac{a_{k+1}}{a_k}>1$, the series diverges.
+        \item \theor (Raabe's criterion) Let $\{a_k\}\subset(0,\infty)$ and $k,k_0\in\N$.\\
+        (1) $\exists q>1,\forall k>k_0:k(\frac{a_{k+1}}{a_k}-1)\geq q\Rightarrow\sum_{k=1}^\infty a_k$ converges. If $\lim_{k\to\infty}k(\frac{a_{k+1}}{a_k}-1)>1$, the series converges.\\
+        (2) $\forall k>k_0:k(\frac{a_{k+1}}{a_k}-1)\leq 1\Rightarrow\sum_{k=1}^\infty a_k$ diverges. Moreover, $\lim_{k\to\infty}k(\frac{a_{k+1}}{a_k}-1)<1$, the series diverges.\\
+        \item \theor (Gauss's criterion) Let $\{a_k\}\subset(0,\infty)$. $\exists p,q\in\R$ and $\epsilon,C>0$ such, that $\frac{a_k}{a_{k+1}}=p+\frac{q}{k}+\frac{t_k}{k^{1+\epsilon}}$, where $|t_k|\leq C$.\\
+        (1) If $p>1$, $\sum_{k=1}^\infty a_k$ converges and if $p<1$, diverges.\\
+        (2) If $p=1$ and $q>1$, the series converges.\\ (3) If $p=1$ and $q\leq 1$, the series diverges.
+
+        % GENERAL SERIES
+
+        \item \theor (Abel and Dirichlet criteria). Let $\{a_k\},\{b_k\}\subset\R$, $\{a_k\}$ be monotonic. Dirichlet: If $\{a_k\}\to 0$ and $\{b_k\}$ has bounded partial sums, then $\sum_{k=1}^\infty a_kb_k$ converges.
+        Abel: If $\{a_k\}$ is bounded and $\sum_{k=1}^\infty b_k$ converges, then $\sum_{k=1}^\infty a_kb_k$ converges.
+        \item \state Complex variant of Abel and Dirichlet criteria have $\{a_k\}\subset\R,\{b_k\}\subset\C$ because of monotony of $\{a_k\}$.
+        \item \state Let $a\in\R$. Then $\{\sin(ak)\}$ has bounded partial sums, and if $a$ is not a multiple of $2\pi$ then $\{\cos(ak)\}$ has bounded partial sums.
+
+        % REARRANGEMENT
+
+        \item \define (Rearrangement of series). Let $\{a_k\}\subset\R$ and $\varphi:\N\to\N$ be a bijetion. Then a series $\sum_{k=1}^\infty a_{\varphi(k)}$ is called the \emph{rearrangement} of $\sum_{k=1}^\infty a_k$ with respect to bijection $\varphi$.
+        \item \define Let $x\in\R$. We define a \emph{possitive part} of $x$ as $x^+:=\text{max}\{x,0\}$ and \emph{negative part} as $x^-:=\text{max}\{-x,0\}$.
+        \item \theor (Characterization of absolute/not-absolute convergence). Let $\{a_k\}\subset\R$. Then\\
+        (1) $\sum_{k=1}^\infty a_k$ converges absolutely $\Leftrightarrow$ $\sum_{k=1}^\infty a^+_k$ and $\sum_{k=1}^\infty a^-_k$ converges.\\
+        (2) $\sum_{k=1}^\infty a_k$ converges not-absolutely $\Rightarrow$ $\sum_{k=1}^\infty a^+_k=\infty$ and $\sum_{k=1}^\infty a^-_k=-\infty$.\\
+        \item \theor (Rearrangement of abs. convergent series). Let $\{a_k\}\subset\R$ and series $\sum_{k=1}^\infty a_k$ converges absolutely. Then every rearrangement of it converges absolutely and has same sum.
+        \item \theor (Riemann rearrangement theorem). Let $\{a_k\}\subset\R$ and series $\sum_{k=1}^\infty a_k$ converges not-absolutely. Then for every $S\in\R^*$ there exists rearrangement of $\sum_{k=1}^\infty a_k$ with sum $S$.
+        \item \define Let $M$ be a countable set. A \emph{generalized series} $\sum_{m\in M}a_m$ converges, if there exists a bijection $\varphi:M\to\N$ a bijection, such that $\sum_{k=1}^\infty a_{\varphi(k)}$ is absolutely convergent. Then we define $\sum_{m\in M}a_m:=\sum_{k=1}^\infty a_{\varphi(k)}$.
+        \item \theor (Cauchy's series product theorem). Let $\{a_k\},\{b_k\}\subset\R$ and let $\sum_{k=1}^\infty a_k$ and $\sum_{k=1}^\infty b_k$ be convergent absolutely. Then $\sum_{i,j=1}^\infty a_ib_j$ converges absolutely and $\sum_{i,j=1}^\infty a_ib_j=(\sum_{k=1}^\infty a_k)(\sum_{k=1}^\infty b_k)$.
+        \item \state (Cauchy's equation). Let $\{a_k\},\{b_k\}\subset\R$, then $\sum_{i,j=1}^\infty a_ib_j=\sum_{n=1}^\infty(\sum_{i+j=n+1}a_ib_j)$.
+        \item \lemma (Convergence of arhitmetic means). Let $\{a_k\}\subset\R$ such that $\lim_{k\to\infty}a_k=A\in\R^*$. We define $\{b_k\}$ so that $b_j=\frac{1}{j}\sum_{k=1}^ja_k$. Then $\lim_{k\to\infty}b_k=A$.
+        \item \define (Cesàro summation). Let $\{a_k\}\subset\R$. $\forall n\in\N:s_n=\sum_{k=1}^na_k,\sigma_n=\frac{1}{n}\sum_{k=1}^ns_k$. We say that $\sum_{k=1}^\infty a_k$ is \emph{Cesàro summable}, if $\lim_{n\to\infty}\sigma_n=A\in\R$. Number $A$ is then called
+        \emph{Cesàro sum} of $\sum_{k=1}^\infty a_k$, denoted as $(C,1)\sum_{k=1}^\infty a_k=A$.
+        \item \theor (Cauchy condensation test). Let $\{a_k\}\in[0,\infty)$ be non-increasing sequence. Then $\sum_{k=1}^\infty a_k$ converges $\Leftrightarrow$ $\sum_{k=1}^\infty 2^ka_{2^k}$ converges.
+        %TODO: In condensation test there can be used any n^ka_(n^k) substitution.
+        \item \theor (The necessary condition of convergence). Let $\{p_k\}\subset(0,\infty)$ and let $\Pi_{k=1}^\infty p_k$ be convergent. Then $\lim_{k\to\infty}p_k=1$.
+        \item \theor Let $\{p_k\}\subset(0,\infty)$ or $\{p_k\}\subset(-1,0)$. Then $\Pi_{k=1}^\infty (1+p_k)$ is convergent $\Longleftrightarrow$ $\sum_{k=1}^\infty p_k$ is convergent.
+
+    \end{enumerate}
+
+    \textbf{XI. Power series}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item \define (Power series). Let $\{a_n\}\subset\C$ and $z_0\subset\C$. Then a series $\sum_{k=0}^\infty a_k(z-z_0)^k$ is called a \emph{power series} centered around $z_0$.
+        \item \define (Radius of convergence). Let $\{a_n\}\subset\C$ and $z_0\in\C$. Then $R$ is the \emph{radius of convergence}, if $R\in\R^*,R>0$ and the series converges if $|z-a|<R$ and diverges if $|z-a|>R$.
+        \item \theor (Convergence of power series). Let $\{a_n\}\in\C$, and let $R:=(\lim\sup_{k\to\infty}\sqrt[k]{|a_k|})^{-1}$, usign $\frac{1}{0}=\infty$ and $\frac{1}{\infty}=0$. Then
+        (1) the series $\sum_{k=0}^\infty a_kz^k$ has a radius of absolute convergence $R$,\\
+        (2) if $\lim_{k\to\infty}|\frac{a_{k+1}}{a_k}|$ exists, then it is equal to $R$,\\
+        (3) if $\lim_{k\to\infty}\sqrt[k]{|a_k|}$ exists, then it is equal to $\frac{1}{R}$.
+        \item \lemma Let $\{a_n\}\subset\C$. Then power series $\sum_{k=0}^\infty a_kz^k$ and $\sum_{k=1}^\infty ka_kz^{k-1}$ have a same radius of convergence.
+        \item \theor (Derivative of power series). Let $\{a_n\}\subset\C$. Then for $x\in(-R,R)$, where $R\geq 0$ is a radius of convergence of associated power series, holds $(\sum_{k=0}^\infty a_kz^k)'=\sum_{k=1}^\infty ka_kz^{k-1}$.
+        \item \state Every power series at its circle of convergence defines infinitely continuously differentiable function.
+        \item \theor (Integral of power series). Let $\{a_n\}\subset\C$. (1) For $x\in\R$ inside circle of convergence we have $\int(\sum_{k=0}^\infty a_kz^k)dz=\sum_{k=0}^\infty \frac{a_k}{k+1}z^{k+1}+C$.\\
+        (2) If $a,b\in(-R,R)$, where $R$ is radius of convergencce of $\sum_{k=0}^\infty a_kz^k$, then\\
+        $(\mathcal R)\int_a^b(\sum_{k=0}^\infty a_kz^k)dz=(\mathcal N)\int_a^b(\sum_{k=0}^\infty a_kz^k)dz=\sum_{k=0}^\infty (\mathcal R)\int_a^ba_kz^kdz=\sum_{k=0}^\infty (\mathcal N)\int_a^ba_kz^kdz$.
+        \item \define (Taylor series). Let $f:\R\to\R$ be an infinitely differentiable at $x_0\in\R$. Then $\sum_{k=0}^\infty\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k$ we call a Taylor series of $f$ at $x_0$.
+        \item \theor (Borel's lemma). Let $\{a_k\}\subset\R,x_0\in\R$ and $\exists\delta>0:\sum_{k=0}^\infty a_k(x-x_0)^k$ converges at $(x_0-\delta,x_0+\delta)$. Then $\sum_{k=0}^\infty a_k(x-x_0)^k$ is a Taylor series of its sum at $x_0$.
+        \item \define
+        \item \theor
+        \item \theor
+        \item \theor
+        \item \define
+        \item \theor
+
+        %TODO: Borel's lemma.
+
+    \end{enumerate}
+
+    \textbf{XII. Metric spaces}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XII. Functions of several variables}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XIII. Classical calculus of variations}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XIV. Series of functions}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XV. Lebesgue integral}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XVI. Lebesgue spaces}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+
+    \textbf{XVII. Line and surface integrals}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+
+    \textbf{XVIII. Differentail forms}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+
+    \textbf{XIX. Fourier series}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XX. Fourier transform}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XXI. Complex analysis}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XXII. Partial differential equations}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XXIII. Functional analysis}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+    \textbf{XXIV. Green's functions}
+
+    \begin{enumerate}[itemsep=2pt, topsep=2pt, partopsep=2pt, parsep=2pt]
+
+        \item
+
+    \end{enumerate}
+
+\end{multicols}
+\end{document}
