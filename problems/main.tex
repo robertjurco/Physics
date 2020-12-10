@@ -1,0 +1,209 @@
+\documentclass[a4paper]{article}
+
+% Geometry for page borders
+\usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry}
+\usepackage{multicol}
+
+% Math packages
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+%Font setting
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\setlength\parindent{0pt}
+\usepackage{textgreek}
+\usepackage[slovak]{babel} % Language hyphenation and typographical rules
+
+% eumerates
+\usepackage{enumitem} % Customized lists
+\setlist[itemize]{noitemsep} % Make itemize lists more compact
+
+% for copying only parts of files
+\usepackage{catchfilebetweentags}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM COMMANDS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\problemsdir}{}
+\newcounter{problem}
+\newcounter{problemcount}
+
+\newcommand{\probinit}{
+    \noindent\textbf{\theproblem.}
+}
+
+\newcommand{\probname}[1]{
+}
+
+\newcommand{\probsource}[1]{\relax}
+
+\newcommand{\probtopics}[1]{\relax}
+
+\newcommand{\probtask}[1]{
+    \noindent#1\par\medskip
+}
+
+\newcommand\probsolution[1]{
+    \noindent\boxed{Solution} #1\par\bigskip
+}
+
+\newcommand{\probanswer}[1]{
+    \noindent\textbf{\theproblem.} #1\par
+}
+
+%mathematical commands
+\renewcommand\d{\mathrm d}
+\newcommand\N{\mathbb N}
+\newcommand\Z{\mathbb Z}
+\newcommand\Q{\mathbb Q}
+\newcommand\R{\mathbb R}
+\newcommand\C{\mathbb C}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Problems in mechanics}
+\author{Collected by Róbert Jurčo}
+\date{2020}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Problems}
+
+\subsection{Statics}
+
+\renewcommand{\problemsdir}{statics}
+\setcounter{problemcount}{20}
+\setcounter{problem}{0}
+\loop{
+    \stepcounter{problem}
+    %\input{\problemsdir/problem_\theproblem.tex}
+    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{problemtag}
+}\ifnum\theproblem<\theproblemcount
+\repeat
+
+\subsection{Dynamics}
+
+\renewcommand{\problemsdir}{dynamics}
+\setcounter{problemcount}{20}
+\setcounter{problem}{0}
+\loop{
+    \stepcounter{problem}
+    %\input{\problemsdir/problem_\theproblem.tex}
+    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{problemtag}
+}\ifnum\theproblem<\theproblemcount
+\repeat
+
+\subsection{Lagrangian mechanics}
+
+\renewcommand{\problemsdir}{Lagrangian_mechanics}
+\setcounter{problemcount}{20}
+\setcounter{problem}{0}
+\loop{
+    \stepcounter{problem}
+    %\input{\problemsdir/problem_\theproblem.tex}
+    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{problemtag}
+}\ifnum\theproblem<\theproblemcount
+\repeat
+
+\subsection{Hamiltonian mechanics}
+
+\renewcommand{\problemsdir}{Hamiltonian_mechanics}
+\setcounter{problemcount}{20}
+\setcounter{problem}{0}
+\loop{
+    \stepcounter{problem}
+    %\input{\problemsdir/problem_\theproblem.tex}
+    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{problemtag}
+}\ifnum\theproblem<\theproblemcount
+\repeat
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SOLUTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+%\section{Solutions}
+
+%\setcounter{problem}{0}
+%\loop{
+%    \stepcounter{problem}
+%    %\input{\problemsdir/problem_\theproblem.tex}
+%    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{problemtag}
+%    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{solutiontag}
+%}\ifnum\theproblem<\theproblemcount
+%\repeat
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%_%% ANSWERS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section{Answers}
+
+\begin{multicols}{2}
+
+\subsection{Statics}
+
+\renewcommand{\problemsdir}{statics}
+\setcounter{problemcount}{20}
+\setcounter{problem}{0}
+\loop{
+    \stepcounter{problem}
+    %\input{\problemsdir/problem_\theproblem.tex}
+    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{answertag}
+}\ifnum\theproblem<\theproblemcount
+\repeat
+
+\subsection{Dynamics}
+
+\renewcommand{\problemsdir}{dynamics}
+\setcounter{problemcount}{20}
+\setcounter{problem}{0}
+\loop{
+    \stepcounter{problem}
+    %\input{\problemsdir/problem_\theproblem.tex}
+    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{answertag}
+}\ifnum\theproblem<\theproblemcount
+\repeat
+
+\subsection{Lagrangian mechanics}
+
+\renewcommand{\problemsdir}{Lagrangian_mechanics}
+\setcounter{problemcount}{20}
+\setcounter{problem}{0}
+\loop{
+    \stepcounter{problem}
+    %\input{\problemsdir/problem_\theproblem.tex}
+    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{answertag}
+}\ifnum\theproblem<\theproblemcount
+\repeat
+
+\subsection{Hamiltonian mechanics}
+
+\renewcommand{\problemsdir}{Hamiltonian_mechanics}
+\setcounter{problemcount}{20}
+\setcounter{problem}{0}
+\loop{
+    \stepcounter{problem}
+    %\input{\problemsdir/problem_\theproblem.tex}
+    \ExecuteMetaData[\problemsdir/problem_\theproblem.tex]{answertag}
+}\ifnum\theproblem<\theproblemcount
+\repeat
+
+\end{multicols}
+\end{document}
